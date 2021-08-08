@@ -54,6 +54,7 @@ struct ChartBars: View {
                 }
 //                .offset(x: 0, y: proxy.size.height * heightRatio)
             }
+            .padding()
         }
     }
 }

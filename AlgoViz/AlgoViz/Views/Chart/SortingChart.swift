@@ -34,7 +34,7 @@ struct SortingChart: View {
                 // Step counter
                 Text("Step \(currentStepIndex)/\(selectionSortSteps.count - 1)")
                     .font(.headline)
-                    .offset(x: 0, y: 10.0)
+                    .padding()
                 
                 // Display the Chart
                 ChartBars(
@@ -42,11 +42,7 @@ struct SortingChart: View {
                     range: algorithmData.1,
                     color: .gray
                 )
-                .padding()
-                .frame(width: .infinity, height: 240, alignment: .center)
-//                .frame(height: )
-//                .offset(x: 0, y: 58)
-            
+                .frame(height: 240)            
                 
                 // Buttons to proceed either forwards or backwards in the array
                 HStack(alignment: .bottom) {
@@ -70,7 +66,6 @@ struct SortingChart: View {
                         Text("Previous Step")
                     }
                     .disabled(reachedStartOfArray)
-                    .padding()
 
                     Spacer()
                     
@@ -89,9 +84,9 @@ struct SortingChart: View {
                         Text("Next Step")
                     }
                     .disabled(reachedEndOfArray)
-                    .padding()
 
                 }
+                .padding()
 //                .offset(x: 0, y: -16)
 
             }
