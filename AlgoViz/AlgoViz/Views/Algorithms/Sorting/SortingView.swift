@@ -16,6 +16,8 @@ func getAlgorithmFromInfo(info: AlgorithmInformation, data: [Double]) -> Algorit
     switch info.name {
     case "Selection Sort":
         return SelectionSort(info: info, data: data)
+    case "Insertion Sort":
+        return InsertionSort(info: info, data: data)
     default:
         return SelectionSort(info: info, data: data) // change to algorithm eventually
     }

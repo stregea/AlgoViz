@@ -10,31 +10,6 @@ import Foundation
 /// Selection Sort
 class SelectionSort:Algorithm {
     
-    /// Remove any duplicated potential duplicated steps of an algorithm.
-    /// - Parameter steps: The steps performed by an algorithm.
-    /// - Returns: An array of steps without any duplicates.
-    func removeDuplicateSteps(steps: [AlgorithmStep]) -> [AlgorithmStep]{
-        
-        /// Set that is used to store unique values.
-        var encountered = Set<[Double]>()
-        
-        /// The array that contains no-duplicated steps of the algorithm.
-        var noDuplicatedSteps: [AlgorithmStep] = []
-        
-        // iterathe through all of the steps of the algorithm to find any potential duplicates.
-        for step in steps {
-            
-            if !encountered.contains(step.data) {
-                // Add the step to the set.
-                encountered.insert(step.data)
-                
-                // Append the step.
-                noDuplicatedSteps.append(step)
-            }
-        }
-        return noDuplicatedSteps
-    }
-    
     /// Perform Selection Sort.
     /// - Returns: An array of algorithm steps.
     override func run() -> [AlgorithmStep]{
