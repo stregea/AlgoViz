@@ -15,19 +15,14 @@ class SelectionSort:Algorithm {
     override func run() -> [AlgorithmStep]{
         
         /// Array to contain each iteration (steps) of the sort.
-        var steps: [AlgorithmStep] = []
-        
-        /// Counter to keep track how many iterations have been performed.
-        var iterations: Int = 0
-        
-        // Store the initial array contents as step 0.
-        steps.append(
+        var steps: [AlgorithmStep] = [
+            // Store the initial array contents as step 0.
             AlgorithmStep(
-                id: iterations,
+                id: 0,
                 data: self.data!
             )
-        )
-
+        ]
+        
         for i in 0..<self.data!.count-1 {
             
             // Assume the smallest element is the current element's index.
@@ -45,17 +40,16 @@ class SelectionSort:Algorithm {
             
             if smallestElementIndex != i {
                 self.data!.swapAt(smallestElementIndex, i)
+                
+                // Add the latest step of the algorithm to the list of steps.
+                steps.append(
+                    AlgorithmStep(
+                        id: steps.count + 1,
+                        data: self.data!
+                    )
+                )
             }
             
-            iterations += 1
-            
-            // Add the latest step of the algorithm to the list of steps.
-            steps.append(
-                AlgorithmStep(
-                    id: iterations,
-                    data: self.data!
-                )
-            )
         }
         
         // remove any potential duplicate steps. -- may just be a selection sort issue.
