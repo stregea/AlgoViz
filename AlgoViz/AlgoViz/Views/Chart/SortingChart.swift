@@ -7,22 +7,25 @@
 
 import SwiftUI
 
-
+/// View that will allow the user to view sorting algorithms.
 struct SortingChart: View {
     
+    /// Array to hold each step that an algorithm performs.
     let selectionSortSteps: [AlgorithmStep]
+    
+    /// Tuple that contains an array of random data, and the range of said data.
     let algorithmData: ([Double], Range<Double>)
     
     /// pointer to keep track of the current step of the array of algorithm steps
     @State private var currentStepIndex: Int = 0
 
-    /// Boolean to determine if the pointer of the array is located at the start of the array
+    /// Boolean to determine if the pointer of the array has reached the start of the array
     @State private var reachedStartOfArray: Bool = true
+    
+    /// Boolean to determine if the pointer of the array has reached the end of the array
     @State private var reachedEndOfArray: Bool = false
     
 
-
-    
     var body: some View {
 
         ScrollView {

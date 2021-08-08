@@ -6,23 +6,6 @@
 //
 
 import Foundation
-extension Dictionary {
-
-    var json: String {
-        let invalidJson = "Not a valid JSON"
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: self, options: .prettyPrinted)
-            return String(bytes: jsonData, encoding: String.Encoding.utf8) ?? invalidJson
-        } catch {
-            return invalidJson
-        }
-    }
-
-    func printJson() {
-        print(json)
-    }
-
-}
 
 /// Parse a JSON file into a structure.
 /// Code taken from SwiftUI tutorial todo: insert link here.
@@ -54,31 +37,4 @@ func load<T: Decodable>(_ filename: String) -> T {
         fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
     }
     
-}
-
-
-func unload(filename: String, data: Dictionary<String, Any>){
-
-    // Find the file
-    let file: FileHandle? = FileHandle(forWritingAtPath: "Resources/\(filename)")
-
-    if file != nil {
-        // Set the data we want to write
-        
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
-        
-            file?.write(jsonData)
-        } catch {
-            fatalError("Couldn't convert dictionary to JSON.")
-        }
-        
-
-        // Close the file
-        file?.closeFile()
-    }
-   else {
-        fatalError("Couldn't find \(filename) in main bundle.")
-    }
-        
 }

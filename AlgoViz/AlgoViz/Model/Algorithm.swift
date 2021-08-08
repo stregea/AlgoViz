@@ -8,6 +8,7 @@
 import Foundation
 
 // todo: allow for interpreting superscripts to change n2 to n^2, and interpret other time complexities.
+/// Enumerated type for the different Space and Time complexitys for the algorithms.
 enum TimeComplexity: String, CaseIterable, Codable {
     case constant = "O(1)"
     case n = "O(n)"
@@ -20,7 +21,7 @@ enum TimeComplexity: String, CaseIterable, Codable {
 enum AlgorithmType: String, CaseIterable, Codable {
     case sorting = "Sorting"
     case pathfinding = "Pathfinding"
-} // this breaks for some reastion.
+} // this breaks the conversion from json for some reason.
 
 /// Model that is used to create a struct that withholds information about an algorithm.
 struct AlgorithmInformation: Hashable, Codable, Identifiable{
@@ -73,7 +74,7 @@ class Algorithm {
     }
     
     /// Perform the algorithm.
-    /// - Returns An array of algorithm steps.
+    /// - Returns: An array of algorithm steps.
     func run() -> [AlgorithmStep]{
         return []
     }

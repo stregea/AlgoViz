@@ -7,9 +7,11 @@
 
 import Foundation
 
-/// This struct will represent one step within an Algorithm.
-/// The implementation will contain a list of AlgorithmStep's which will allow for the UI
-/// to display every iteration of the selected algorithm to search or sort.
+/**
+ This struct will represent one step within an Algorithm.
+ The implementation will contain a list of AlgorithmStep's which will allow for the UI
+ to display every iteration of the selected algorithm to search or sort.
+ */
 struct AlgorithmStep: Identifiable, Codable, Hashable, CustomStringConvertible {
     /// The id (iteration #) of the current step of the algorithm.
     let id: Int

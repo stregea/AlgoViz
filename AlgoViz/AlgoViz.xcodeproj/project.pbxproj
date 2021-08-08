@@ -91,8 +91,8 @@
 			isa = PBXGroup;
 			children = (
 				E6B6A1D326B709D000D9E93E /* ChartCapsule.swift */,
-				E6B6A1D626B709F200D9E93E /* SortingChart.swift */,
 				E632455C26BC02FE0063E0CD /* ChartBars.swift */,
+				E6B6A1D626B709F200D9E93E /* SortingChart.swift */,
 			);
 			path = Chart;
 			sourceTree = "<group>";

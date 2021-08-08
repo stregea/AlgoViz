@@ -14,52 +14,48 @@ extension Animation {
     }
 }
 
+/// Determine the magnitude of a range.
+/// - Parameter range: The range to determine the magnitude of.
+/// - Returns: The magnitude of a specified range.
+func magnitude(of range: Range<Double>) -> Double {
+    return range.upperBound - range.lowerBound
+}
 
+/// Subview to be called within SortingView that will display a chart of several bars.
 struct ChartBars: View {
-    var step: AlgorithmStep // need to be able to iterate through each of these steps
+    /// The current step of the algorithm.
+    var step: AlgorithmStep
+    
+    /// The overall range of the data.
     var range: Range<Double>
+    
+    /// The color of the capsules within the chart.
     var color: Color
     
-    @State private var hasBeenViewed: Bool = false
-    
     var body: some View {
-        let maxMagnitude = step.data.map{_ in magnitude(of: range)}.max()!
+//        let maxMagnitude = step.data.map{_ in magnitude(of: range)}.max()!
         
-        let heightRatio = 1 - CGFloat(maxMagnitude / magnitude(of: range))
+//        let heightRatio = 1 - CGFloat(maxMagnitude / magnitude(of: range))
         
         return GeometryReader { proxy in
-            if !hasBeenViewed {
-                HStack(alignment: .bottom, spacing: proxy.size.width / 120) {
+            HStack(alignment: .bottom, spacing: proxy.size.width / 120) {
+                
+                ForEach(step.data.indices) { index in
                     
-                    ForEach(step.data.indices) { index in
-                        
-                        ChartCapsule(
-                            height: CGFloat(step.data[index] * 2),
-                            range: range,
-                            overallRange: range,
-                            text: String(Int(step.data[index]))
-                        )
-                        .colorMultiply(color)
-                        .transition(.slide)
-                        .animation(.ripple(index: index))
-                    }
-                    .offset(x: 0, y: proxy.size.height * heightRatio)
+                    ChartCapsule(
+                        height: CGFloat(step.data[index] * 2),
+                        range: range,
+                        overallRange: range,
+                        text: String(Int(step.data[index]))
+                    )
+                    .colorMultiply(color)
+                    .transition(.slide)
+                    .animation(.ripple(index: index))
                 }
+//                .offset(x: 0, y: proxy.size.height * heightRatio)
             }
         }
     }
-}
-
-func rangeOfRanges<C: Collection>(_ ranges: C) -> Range<Double>
-    where C.Element == Range<Double> {
-        guard !ranges.isEmpty else { return 0..<0 }
-        let low = ranges.lazy.map { $0.lowerBound }.min()!
-        let high = ranges.lazy.map { $0.upperBound }.max()!
-        return low..<high
-}
-
-func magnitude(of range: Range<Double>) -> Double {
-    return range.upperBound - range.lowerBound
 }
 
 struct ChartBars_Previews: PreviewProvider {
