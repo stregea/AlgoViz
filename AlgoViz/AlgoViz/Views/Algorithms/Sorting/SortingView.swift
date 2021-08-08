@@ -7,30 +7,41 @@
 
 import SwiftUI
 
+/// Construct an algorithm based on its information.
+/// - Parameter info: The information pertaining to the algorithm.
+/// - Parameter data: The data the algorithm will use.
+/// - Returns: An algorithm instance.
+func getAlgorithmFromInfo(info: AlgorithmInformation, data: [Double]) -> Algorithm {
+    
+    switch info.name {
+    case "Selection Sort":
+        return SelectionSort(info: info, data: data)
+    default:
+        return SelectionSort(info: info, data: data) // change to algorithm eventually
+    }
+}
+
 /// View that will contain the main view for the sorting algorithms.
 struct SortingView: View{
     @EnvironmentObject var modelData: ModelData
-
+    
     var body: some View {
-        VStack {
-            
-            // generate random data for the view.
-            let algorithmData: ([Double], Range<Double>) = generateDataForAlgorithm(sizeOfData: 15)
-            
-            // todo: add picker to select wanted algorithm
-            // create algorithm object.
-            // send into the Sorting Chart view.
-            
-            let selectionSort: Algorithm = SelectionSort(
-                info: modelData.sortingAlgorithms[0], // change this to a dynamic index later.
-                data: algorithmData.0
-            )
-            
-            // Display the Bar Chart View to perform the sort.
-            SortingChart(selectionSortSteps: selectionSort.run(), algorithmData: algorithmData)
-            
-            // move the step and previous/next buttons here?
+        
+        // generate random data for the view.
+        let algorithmData: ([Double], Range<Double>) = generateDataForAlgorithm(sizeOfData: 15)
+        
+        List {
+            ForEach(modelData.sortingAlgorithms){ sortingAlgorithmInfo in
+                let selectedAlgorithm: Algorithm = getAlgorithmFromInfo(info: sortingAlgorithmInfo, data: algorithmData.0)
+                
+                NavigationLink(
+                    destination: SortingChart(selectionSortSteps: selectedAlgorithm.run(), algorithmData: algorithmData)){
+                    SortingRowView(algorithm: sortingAlgorithmInfo)
+                }
+            }
         }
+        .navigationTitle("Sorting Algorithms")
+        .frame(minWidth: 300)
     }
 }
 

@@ -9,6 +9,7 @@ import SwiftUI
 
 /// View that will allow the user to view sorting algorithms.
 struct SortingChart: View {
+    @EnvironmentObject var modelData: ModelData
     
     /// Array to hold each step that an algorithm performs.
     let selectionSortSteps: [AlgorithmStep]
@@ -24,8 +25,7 @@ struct SortingChart: View {
     
     /// Boolean to determine if the pointer of the array has reached the end of the array
     @State private var reachedEndOfArray: Bool = false
-    
-
+        
     var body: some View {
 
         ScrollView {
@@ -42,7 +42,7 @@ struct SortingChart: View {
                     range: algorithmData.1,
                     color: .gray
                 )
-                .frame(height: 240)            
+                .frame(height: 240)
                 
                 // Buttons to proceed either forwards or backwards in the array
                 HStack(alignment: .bottom) {
@@ -87,11 +87,8 @@ struct SortingChart: View {
 
                 }
                 .padding()
-//                .offset(x: 0, y: -16)
-
             }
         }
-        
     }
 }
 

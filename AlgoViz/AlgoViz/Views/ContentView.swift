@@ -10,19 +10,24 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Text("AlgoViz")
-                .padding()
+//            Text("AlgoViz")
+            
             NavigationView{
                 VStack{
                     NavigationLink(destination: PathfinderView()) {
                         Text("Pathfinding Algorithms")
                     }
                     .padding()
+                    
                     NavigationLink(destination: SortingView()) {
                         Text("Sorting Algorithms")
                     }
+                    .navigationTitle("Home")
+
                 }
             }
+            .navigationViewStyle(StackNavigationViewStyle())
+
         }
     }
 }
