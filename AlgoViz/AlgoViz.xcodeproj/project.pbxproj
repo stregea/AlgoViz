@@ -11,7 +11,6 @@
 		E65115E626BC0AE400595010 /* AlgorithmStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65115E526BC0AE400595010 /* AlgorithmStep.swift */; };
 		E6B6A1D426B709D000D9E93E /* ChartCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B6A1D326B709D000D9E93E /* ChartCapsule.swift */; };
 		E6B6A1D726B709F200D9E93E /* SortingChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B6A1D626B709F200D9E93E /* SortingChart.swift */; };
-		E6B6A1DB26B70A8500D9E93E /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B6A1DA26B70A8500D9E93E /* Chart.swift */; };
 		E6B6A1DD26B70ADB00D9E93E /* Algorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B6A1DC26B70ADB00D9E93E /* Algorithm.swift */; };
 		E6B6A1E026B70CD100D9E93E /* algorithms.json in Resources */ = {isa = PBXBuildFile; fileRef = E6B6A1DF26B70CD100D9E93E /* algorithms.json */; };
 		E6B6A1E526B717B000D9E93E /* LoadJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B6A1E426B717B000D9E93E /* LoadJSON.swift */; };
@@ -32,7 +31,6 @@
 		E65115E526BC0AE400595010 /* AlgorithmStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmStep.swift; sourceTree = "<group>"; };
 		E6B6A1D326B709D000D9E93E /* ChartCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCapsule.swift; sourceTree = "<group>"; };
 		E6B6A1D626B709F200D9E93E /* SortingChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingChart.swift; sourceTree = "<group>"; };
-		E6B6A1DA26B70A8500D9E93E /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
 		E6B6A1DC26B70ADB00D9E93E /* Algorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
 		E6B6A1DF26B70CD100D9E93E /* algorithms.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = algorithms.json; sourceTree = "<group>"; };
 		E6B6A1E426B717B000D9E93E /* LoadJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadJSON.swift; sourceTree = "<group>"; };
@@ -67,7 +65,6 @@
 				E6B6A1DC26B70ADB00D9E93E /* Algorithm.swift */,
 				E6B6A1E626B717F100D9E93E /* Algorithms */,
 				E6B6A1EF26B7189E00D9E93E /* Helpers */,
-				E6B6A1DA26B70A8500D9E93E /* Chart.swift */,
 				E6B6A1F026B71B9700D9E93E /* ModelData.swift */,
 				E65115E526BC0AE400595010 /* AlgorithmStep.swift */,
 			);
@@ -286,7 +283,6 @@
 				E65115E626BC0AE400595010 /* AlgorithmStep.swift in Sources */,
 				E6DF90A326AE4F2300E1967D /* AlgoVizApp.swift in Sources */,
 				E6B6A1E526B717B000D9E93E /* LoadJSON.swift in Sources */,
-				E6B6A1DB26B70A8500D9E93E /* Chart.swift in Sources */,
 				E6B6A1D726B709F200D9E93E /* SortingChart.swift in Sources */,
 				E6B6A1D426B709D000D9E93E /* ChartCapsule.swift in Sources */,
 				E6B6A1DD26B70ADB00D9E93E /* Algorithm.swift in Sources */,

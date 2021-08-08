@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Model that will serve as the observable object for the application
 final class ModelData: ObservableObject {
     
     /// Array that holds all of the contents found within 'algorithms.json'

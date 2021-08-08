@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 func generateDataForAlgorithm(sizeOfData: Int) -> ([Double], Range<Double>) {
 
     // for now create random data..eventually pass this in from data being created by user.

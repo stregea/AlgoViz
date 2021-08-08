@@ -1,4 +1,3 @@
-//
 //  ChartBars.swift
 //  AlgoViz
 //
@@ -17,32 +16,35 @@ extension Animation {
 
 
 struct ChartBars: View {
-    var steps: [AlgorithmStep]
+    var step: AlgorithmStep // need to be able to iterate through each of these steps
     var range: Range<Double>
     var color: Color
     
+    @State private var hasBeenViewed: Bool = false
+    
     var body: some View {
-        let maxMagnitude = steps[0].data.map{_ in magnitude(of: range)}.max()!
+        let maxMagnitude = step.data.map{_ in magnitude(of: range)}.max()!
         
         let heightRatio = 1 - CGFloat(maxMagnitude / magnitude(of: range))
-
+        
         return GeometryReader { proxy in
-            HStack(alignment: .bottom, spacing: proxy.size.width / 120) {
-                
-                
-                ForEach(steps[0].data.indices) { index in
-                    ChartCapsule(
-                        height: CGFloat(steps[0].data[index] * 2),
-                        range: range,
-                        overallRange: range,
-                        text: String(Int(steps[0].data[index]))
-                    )
+            if !hasBeenViewed {
+                HStack(alignment: .bottom, spacing: proxy.size.width / 120) {
+                    
+                    ForEach(step.data.indices) { index in
+                        
+                        ChartCapsule(
+                            height: CGFloat(step.data[index] * 2),
+                            range: range,
+                            overallRange: range,
+                            text: String(Int(step.data[index]))
+                        )
                         .colorMultiply(color)
                         .transition(.slide)
                         .animation(.ripple(index: index))
+                    }
+                    .offset(x: 0, y: proxy.size.height * heightRatio)
                 }
-                .offset(x: 0, y: proxy.size.height * heightRatio)
-                
             }
         }
     }
@@ -50,10 +52,10 @@ struct ChartBars: View {
 
 func rangeOfRanges<C: Collection>(_ ranges: C) -> Range<Double>
     where C.Element == Range<Double> {
-    guard !ranges.isEmpty else { return 0..<0 }
-    let low = ranges.lazy.map { $0.lowerBound }.min()!
-    let high = ranges.lazy.map { $0.upperBound }.max()!
-    return low..<high
+        guard !ranges.isEmpty else { return 0..<0 }
+        let low = ranges.lazy.map { $0.lowerBound }.min()!
+        let high = ranges.lazy.map { $0.upperBound }.max()!
+        return low..<high
 }
 
 func magnitude(of range: Range<Double>) -> Double {
@@ -73,7 +75,7 @@ struct ChartBars_Previews: PreviewProvider {
         
         
         ChartBars(
-            steps: selectionSortSteps,
+            step: selectionSortSteps[selectionSortSteps.count-1],
             range: algorithmData.1,
             color: .gray
         )
