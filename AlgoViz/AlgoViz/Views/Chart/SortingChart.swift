@@ -31,6 +31,11 @@ struct SortingChart: View {
         ScrollView {
             VStack {
                 
+                // Step counter
+                Text("Step \(currentStepIndex)/\(selectionSortSteps.count - 1)")
+                    .font(.headline)
+                    .offset(x: 0, y: 10.0)
+                
                 // Display the Chart
                 ChartBars(
                     step: selectionSortSteps[currentStepIndex],
@@ -38,12 +43,10 @@ struct SortingChart: View {
                     color: .gray
                 )
                 .padding()
-                .offset(x: 0, y: 58)
-                
-                // Step counter
-                Text("Step \(currentStepIndex)/\(selectionSortSteps.count - 1)")
-                    .font(.headline)
-                
+                .frame(width: .infinity, height: 240, alignment: .center)
+//                .frame(height: )
+//                .offset(x: 0, y: 58)
+            
                 
                 // Buttons to proceed either forwards or backwards in the array
                 HStack(alignment: .bottom) {
@@ -66,8 +69,10 @@ struct SortingChart: View {
                     ) {
                         Text("Previous Step")
                     }
-                    .padding()
                     .disabled(reachedStartOfArray)
+                    .padding()
+
+                    Spacer()
                     
                     // Next button
                     Button(action: {
@@ -82,10 +87,12 @@ struct SortingChart: View {
                         }
                     }) {
                         Text("Next Step")
-                    }.padding()
+                    }
                     .disabled(reachedEndOfArray)
+                    .padding()
 
-                }.offset(x: 0, y: 205)
+                }
+//                .offset(x: 0, y: -16)
 
             }
         }

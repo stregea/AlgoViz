@@ -37,7 +37,7 @@ struct ChartCapsule: View {
             Capsule()
                 .fill(Color.white)
                 .frame(height: height * heightRatio)
-                .offset(x: 0, y: height * -offsetRatio)
+//                .offset(x: 0, y: height * -offsetRatio)
             
             Text(text)
                 .font(.headline)
