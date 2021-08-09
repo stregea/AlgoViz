@@ -25,7 +25,7 @@ class BubbleSort: Algorithm {
         for i in 0..<size {
             var swapped: Bool = true
             
-            for j in 0..<size-i-1 {
+            for j in 0..<size-i {
                 if self.data![j] > self.data![j+1] {
                     self.data!.swapAt(j, j+1)
                     swapped = true
