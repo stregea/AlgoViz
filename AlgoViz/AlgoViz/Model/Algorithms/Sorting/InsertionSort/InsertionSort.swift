@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Class that will be used to perform InsertionSort.
 class InsertionSort: Algorithm {
     
     /// Perform Insertion Sort.

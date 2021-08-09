@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Selection Sort
+/// Class that will be used to perform SelectionSort.
 class SelectionSort:Algorithm {
     
     /// Perform Selection Sort.

@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Class that will be used to perform BubbleSort.
 class BubbleSort: Algorithm {
     
     /// Perform BubbleSort.
