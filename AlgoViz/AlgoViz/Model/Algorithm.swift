@@ -84,7 +84,7 @@ class Algorithm {
         /// The array that contains no-duplicated steps of the algorithm.
         var noDuplicatedSteps: [AlgorithmStep] = []
         
-        // iterathe through all of the steps of the algorithm to find any potential duplicates.
+        // iterate through all of the steps of the algorithm to find any potential duplicates.
         for step in steps {
             
             if !encountered.contains(step.data) {
