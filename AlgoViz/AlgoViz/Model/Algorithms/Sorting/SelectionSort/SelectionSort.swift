@@ -53,7 +53,7 @@ class SelectionSort:Algorithm {
         }
         
         // remove any potential duplicate steps. -- may just be a selection sort issue.
-        steps = removeDuplicateSteps(steps: steps)
+        steps = self.removeDuplicateSteps(steps: steps)
         return steps
     }
 }

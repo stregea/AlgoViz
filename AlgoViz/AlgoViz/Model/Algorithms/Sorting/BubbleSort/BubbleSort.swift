@@ -56,6 +56,6 @@ class BubbleSort: Algorithm {
             }
         }
         
-        return removeDuplicateSteps(steps: steps)
+        return self.removeDuplicateSteps(steps: steps)
     }
 }
