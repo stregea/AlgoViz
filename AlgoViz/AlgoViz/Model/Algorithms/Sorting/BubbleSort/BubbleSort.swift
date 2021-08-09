@@ -9,6 +9,8 @@ import Foundation
 
 class BubbleSort: Algorithm {
     
+    /// Perform BubbleSort.
+    /// - Returns: An array of steps BubbleSort performed.
     override func run() -> [AlgorithmStep] {
         /// The size of the array
         let size = self.data!.count-1

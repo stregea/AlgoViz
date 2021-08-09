@@ -11,7 +11,7 @@ import Foundation
 class SelectionSort:Algorithm {
     
     /// Perform Selection Sort.
-    /// - Returns: An array of algorithm steps.
+    /// - Returns: An array of steps SelectionSort performed.
     override func run() -> [AlgorithmStep]{
         
         /// Array to contain each iteration (steps) of the sort.

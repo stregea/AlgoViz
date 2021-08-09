@@ -10,7 +10,7 @@ import Foundation
 class InsertionSort: Algorithm {
     
     /// Perform Insertion Sort.
-    /// - Returns: An array of algorithm steps.
+    /// - Returns: An array of steps InsertionSort performed.
     override func run() -> [AlgorithmStep] {
         
         /// Array to contain each iteration (steps) of the sort.
