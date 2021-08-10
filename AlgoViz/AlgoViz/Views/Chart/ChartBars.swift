@@ -62,7 +62,7 @@ struct ChartBars_Previews: PreviewProvider {
         let algorithmData = generateDataForAlgorithm(sizeOfData: 15)
         let selectionSort: Algorithm = SelectionSort(
             info: modelData.sortingAlgorithms[0],
-            data: algorithmData.data
+            data: algorithmData
         )
         
         let selectionSortSteps: [AlgorithmStep] = selectionSort.run()

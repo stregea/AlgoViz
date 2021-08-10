@@ -24,5 +24,5 @@ func generateDataForAlgorithm(sizeOfData: Int) -> AlgorithmData {
     let temp_sorted_data: [Double] = data.sorted()
     let range: Range<Double> = temp_sorted_data[0]..<temp_sorted_data[temp_sorted_data.count - 1]
     
-    return AlgorithmData(data: data, dataRange: range)
+    return AlgorithmData(contents: data, dataRange: range)
 }

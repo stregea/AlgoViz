@@ -9,30 +9,25 @@ import Foundation
 class QuickSort: Algorithm {
     
     private func partition(lowIndex: Int, highIndex: Int) -> Int{
-        let pivot: Double = self.data![highIndex]
+        let pivot: Double = self.data!.contents[highIndex]
         
         var i = lowIndex - 1
         var j = lowIndex
         
         while j <= highIndex - 1 {
             
-            // If current element is smaller than or
-            // equal to pivot
-            if self.data![j] <= pivot {
+            // If current element is smaller than or equal to pivot
+            if self.data!.contents[j] <= pivot {
                 i += 1
                 
-                // swap arr[i] and arr[j]
-                let temp = self.data![i]
-                self.data![i] = self.data![j]
-                self.data![j] = temp
+                // swap index i and j
+                self.data!.contents.swapAt(i, j)
             }
             j += 1
         }
         
-        // swap arr[i+1] and arr[high] (or pivot)
-        let temp = self.data![i + 1]
-        self.data![i + 1] = self.data![highIndex]
-        self.data![highIndex] = temp
+        // swap index (i + 1)arr and the highest index (or pivot)
+        self.data!.contents.swapAt(i + 1, highIndex)
         
         return i + 1
     }
@@ -43,12 +38,12 @@ class QuickSort: Algorithm {
             // Store the initial array contents as step 0.
             AlgorithmStep(
                 id: 0,
-                data: self.data!
+                data: self.data!.contents
             )
         ]
         
         var leftIndex: Int = 0
-        var rightIndex: Int = self.data!.count - 1
+        var rightIndex: Int = self.data!.contents.count - 1
         
         var stack: Stack = Stack<Int>()
         
@@ -82,7 +77,7 @@ class QuickSort: Algorithm {
             steps.append(
                 AlgorithmStep(
                     id: steps.count + 1,
-                    data: self.data!
+                    data: self.data!.contents
                 )
             )
             

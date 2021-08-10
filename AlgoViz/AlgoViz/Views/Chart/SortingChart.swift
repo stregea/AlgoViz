@@ -9,37 +9,35 @@ import SwiftUI
 
 /// View that will allow the user to view sorting algorithms.
 struct SortingChart: View {
-    @EnvironmentObject var modelData: ModelData
+            
+    let algorithm: Algorithm
     
     /// Array to hold each step that an algorithm performs.
-    let selectionSortSteps: [AlgorithmStep]
-    
-    /// Tuple that contains an array of random data, and the range of said data.
-    let algorithmData: AlgorithmData
+    let algorithmSteps: [AlgorithmStep]
     
     /// pointer to keep track of the current step of the array of algorithm steps
     @State private var currentStepIndex: Int = 0
-
+    
     /// Boolean to determine if the pointer of the array has reached the start of the array
     @State private var reachedStartOfArray: Bool = true
     
     /// Boolean to determine if the pointer of the array has reached the end of the array
     @State private var reachedEndOfArray: Bool = false
-        
+    
     var body: some View {
-
+        
         ScrollView {
             VStack {
                 
                 // Step counter
-                Text("Step \(currentStepIndex)/\(selectionSortSteps.count - 1)")
+                Text("Step \(currentStepIndex)/\(algorithmSteps.count - 1)")
                     .font(.headline)
                     .padding()
                 
                 // Display the Chart
                 ChartBars(
-                    step: selectionSortSteps[currentStepIndex],
-                    range: algorithmData.dataRange,
+                    step: algorithmSteps[currentStepIndex], // this prevents an array out of bounds error.
+                    range: algorithm.data!.dataRange,
                     color: .gray
                 )
                 .frame(height: 240)
@@ -50,13 +48,12 @@ struct SortingChart: View {
                     // Previous button
                     Button(
                         action: {
-
                             if !reachedStartOfArray {
                                 reachedEndOfArray = false
                                 self.currentStepIndex -= 1
                                 
                                 
-                                //
+                                // disable this button if at the beginning of the array.
                                 if self.currentStepIndex == 0 {
                                     reachedStartOfArray = true
                                 }
@@ -66,7 +63,7 @@ struct SortingChart: View {
                         Text("Previous Step")
                     }
                     .disabled(reachedStartOfArray)
-
+                    
                     Spacer()
                     
                     // Next button
@@ -75,8 +72,8 @@ struct SortingChart: View {
                             reachedStartOfArray = false
                             self.currentStepIndex += 1
                             
-                            // disable the button if at the end of the array
-                            if self.currentStepIndex == selectionSortSteps.count-1 {
+                            // disable this button if at the end of the array.
+                            if self.currentStepIndex == algorithmSteps.count-1 {
                                 reachedEndOfArray = true
                             }
                         }
@@ -84,7 +81,7 @@ struct SortingChart: View {
                         Text("Next Step")
                     }
                     .disabled(reachedEndOfArray)
-
+                    
                 }
                 .padding()
             }
@@ -100,9 +97,9 @@ struct SortingChart_Previews: PreviewProvider {
         
         let selectionSort: Algorithm = SelectionSort(
             info: modelData.sortingAlgorithms[0],
-            data: algorithmData.data
+            data: algorithmData
         )
         
-        SortingChart(selectionSortSteps: selectionSort.run(), algorithmData: generateDataForAlgorithm(sizeOfData: 15))
+        SortingChart(algorithm: selectionSort, algorithmSteps: selectionSort.run())
     }
 }

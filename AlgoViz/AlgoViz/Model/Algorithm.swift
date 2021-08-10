@@ -60,15 +60,17 @@ struct AlgorithmInformation: Hashable, Codable, Identifiable{
 /// Model that is used to create an object instance of an Algorithm.
 class Algorithm {
     /// Object that contains all of the information pertaining to this algorithm.
-    var info: AlgorithmInformation
+    var info: AlgorithmInformation?
     
     /// Object that contains the information to be used for  the sorting algorithms.
-    var data: [Double]?
+    var data: AlgorithmData?
+    
+    var steps: [AlgorithmStep]? = nil
     
     /// Initialize an instance of an Algorithm.
     /// - Parameter info: The information that pertains to this Algorithm.
     /// - Parameter data: The data that this algorithm will use to search/sort.
-    init(info: AlgorithmInformation, data: [Double]){
+    init(info: AlgorithmInformation?, data: AlgorithmData?){
         self.info = info
         self.data = data
     }

@@ -17,10 +17,10 @@ class MergeSort: Algorithm {
     /// - Parameter buffer: Subarray that temporarily holds values to help iteratively sort the sortedArray.
     private func merge(size: Int, leftIndex: Int, sortedArray: inout [Double], buffer: inout [Double]){
         var left: Int = leftIndex
-        var right: Int = min(left+size, self.data!.count)
+        var right: Int = min(left+size, self.data!.contents.count)
         
         let leftLimit: Int = right
-        let rightLimit: Int = min(right+size, self.data!.count)
+        let rightLimit: Int = min(right+size, self.data!.contents.count)
         
         var i = left
         
@@ -67,7 +67,7 @@ class MergeSort: Algorithm {
         var steps: [AlgorithmStep] = [
             AlgorithmStep(
                 id: 0,
-                data: self.data!
+                data: self.data!.contents
             )
         ]
         
@@ -102,6 +102,6 @@ class MergeSort: Algorithm {
     /// Run Iterative Merge Sort (Bottom-up approach)
     /// - Returns: An array of steps MergeSort performed.
     override func run() -> [AlgorithmStep] {
-        return mergeSort(data: self.data!)
+        return mergeSort(data: self.data!.contents)
     }
 }

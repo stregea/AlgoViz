@@ -11,7 +11,7 @@ import Foundation
 struct AlgorithmData {
     
     /// The data the algorithm will be using.
-    var data: [Double]
+    var contents: [Double]
     
     /// The overall range of the data,
     var dataRange: Range<Double>

@@ -19,19 +19,19 @@ class InsertionSort: Algorithm {
             // Store the initial array contents as step 0.
             AlgorithmStep(
                 id: 0,
-                data: self.data!
+                data: self.data!.contents
             )
         ]
         
-        for i in 0..<self.data!.count {
-            let key: Double = self.data![i]
+        for i in 0..<self.data!.contents.count {
+            let key: Double = self.data!.contents[i]
             
             var j: Int = i - 1
             
             // if the selected key is less than the previous index,
             // shift all previous contents down the array.
-            while j >= 0 && key < self.data![j] {
-                self.data![j+1] = self.data![j]
+            while j >= 0 && key < self.data!.contents[j] {
+                self.data!.contents[j+1] = self.data!.contents[j]
                 j -= 1
                 
                 // mini step -- store when able to get full animation working.
@@ -44,13 +44,13 @@ class InsertionSort: Algorithm {
             }
             
             // place the key into the stop portion of the sorted sub array.
-            self.data![j+1] = key
+            self.data!.contents[j+1] = key
             
             // Store the initial array contents as step 0.
             steps.append(
                 AlgorithmStep(
                     id: steps.count + 1,
-                    data: self.data!
+                    data: self.data!.contents
                 )
             )
         }

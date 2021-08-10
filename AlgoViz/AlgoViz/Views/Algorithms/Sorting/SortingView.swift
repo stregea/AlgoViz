@@ -11,50 +11,75 @@ import SwiftUI
 /// - Parameter info: The information pertaining to the algorithm.
 /// - Parameter data: The data the algorithm will use.
 /// - Returns: An algorithm instance.
-func getAlgorithmFromInfo(info: AlgorithmInformation, data: [Double]) -> Algorithm {
+func getAlgorithmFromInfo(info: AlgorithmInformation, data: AlgorithmData) -> Algorithm {
+    var alg: Algorithm
     
     switch info.name {
     case "Selection Sort":
-        return SelectionSort(info: info, data: data)
+        alg = SelectionSort(info: info, data: data)
     case "Insertion Sort":
-        return InsertionSort(info: info, data: data)
+        alg = InsertionSort(info: info, data: data)
     case "Bubble Sort":
-        return BubbleSort(info: info, data: data)
+        alg = BubbleSort(info: info, data: data)
     case "Merge Sort":
-        return MergeSort(info: info, data: data)
+        alg = MergeSort(info: info, data: data)
     case "Quick Sort":
-        return QuickSort(info: info, data: data)
+        alg = QuickSort(info: info, data: data)
     default:
-        return SelectionSort(info: info, data: data) // change to algorithm eventually
+        alg = Algorithm(info: info, data: data)
     }
+    
+    alg.steps = alg.run()
+    return alg
 }
 
 /// View that will contain the main view for the sorting algorithms.
 struct SortingView: View{
+    
+    /// The environment object,
     @EnvironmentObject var modelData: ModelData
-    @State private var selectedSort: AlgorithmInformation?
-
+    
+    @State private var algorithmData: AlgorithmData = generateDataForAlgorithm(sizeOfData: 15)
+    
+    @State private var selectedAlgorithm: Algorithm? = nil
     
     var body: some View {
-        
-        // generate random data for the view.
-        let algorithmData: AlgorithmData = generateDataForAlgorithm(sizeOfData: 15)
-        
+    
         NavigationView {
-            List(selection: $selectedSort) {
-                ForEach(modelData.sortingAlgorithms){ sortingAlgorithmInfo in
-                    let selectedAlgorithm: Algorithm = getAlgorithmFromInfo(info: sortingAlgorithmInfo, data: algorithmData.data)
+            List {
+
+                ForEach(modelData.sortingAlgorithms){ algorithmInformation in
                     
+                    let algorithm = (selectedAlgorithm == nil) ? getAlgorithmFromInfo(info: algorithmInformation, data: algorithmData) : selectedAlgorithm!
+                                        
                     NavigationLink(
-                        destination: SortingChart(selectionSortSteps: selectedAlgorithm.run(), algorithmData: algorithmData)){
-                        SortingRowView(algorithm: sortingAlgorithmInfo)
+                        destination: SortingChart(algorithm: algorithm, algorithmSteps: algorithm.steps!))
+                    {
+                        SortingRowView(algorithm: algorithmInformation)
                     }
-                    .tag(sortingAlgorithmInfo.name)
+                    
+                    // update the data when the user goes back to the main screen.
+                    .onDisappear(){
+                        algorithmData = generateDataForAlgorithm(sizeOfData: 15)
+
+                        
+                        // want to eventually be able to get this to work with .onAppear to have view already updated before
+                        // moving into the selected algorithm view.
+                        selectedAlgorithm = getAlgorithmFromInfo(info: algorithmInformation, data: algorithmData)
+                    }
+                    .onAppear(){
+//                        selectedAlgorithm = getAlgorithmFromInfo(info: algorithmInformation, data: algorithmData)
+                    }
+                    .tag(algorithmInformation.name)
+                    
                 }
+                
             }
             .navigationTitle("Sorting Algorithms")
             .frame(minWidth: 300)
         }
+//        .focusedValue(\.selectedAlgorithm, $modelData.sortingAlgorithms[index ?? 0])
+
     }
 }
 
