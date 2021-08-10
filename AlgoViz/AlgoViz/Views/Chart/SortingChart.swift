@@ -15,7 +15,7 @@ struct SortingChart: View {
     let selectionSortSteps: [AlgorithmStep]
     
     /// Tuple that contains an array of random data, and the range of said data.
-    let algorithmData: ([Double], Range<Double>)
+    let algorithmData: AlgorithmData
     
     /// pointer to keep track of the current step of the array of algorithm steps
     @State private var currentStepIndex: Int = 0
@@ -39,7 +39,7 @@ struct SortingChart: View {
                 // Display the Chart
                 ChartBars(
                     step: selectionSortSteps[currentStepIndex],
-                    range: algorithmData.1,
+                    range: algorithmData.dataRange,
                     color: .gray
                 )
                 .frame(height: 240)
@@ -96,11 +96,11 @@ struct SortingChart_Previews: PreviewProvider {
     static var previews: some View {
         let modelData: ModelData = ModelData()
         
-        let algorithmData: ([Double], Range<Double>) = generateDataForAlgorithm(sizeOfData: 15)
+        let algorithmData: AlgorithmData = generateDataForAlgorithm(sizeOfData: 15)
         
         let selectionSort: Algorithm = SelectionSort(
             info: modelData.sortingAlgorithms[0],
-            data: algorithmData.0
+            data: algorithmData.data
         )
         
         SortingChart(selectionSortSteps: selectionSort.run(), algorithmData: generateDataForAlgorithm(sizeOfData: 15))

@@ -98,6 +98,10 @@ class Algorithm {
         return noDuplicatedSteps
     }
     
+    func setAlgorithmData() {
+        
+    }
+    
     /// Perform the algorithm.
     /// - Returns: An array of algorithm steps.
     func run() -> [AlgorithmStep]{

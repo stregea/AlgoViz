@@ -7,28 +7,32 @@
 
 import SwiftUI
 
+enum Tab {
+    case sorting
+    case pathfinding
+}
+
 struct ContentView: View {
+    @State private var selection: Tab = .sorting
+
     var body: some View {
-        VStack {
-//            Text("AlgoViz")
-            
-            NavigationView{
-                VStack{
-                    NavigationLink(destination: PathfinderView()) {
-                        Text("Pathfinding Algorithms")
-                    }
-                    .padding()
-                    
-                    NavigationLink(destination: SortingView()) {
-                        Text("Sorting Algorithms")
-                    }
-                    .navigationTitle("Home")
-
-                }
+        
+        TabView(selection: $selection) {
+            SortingView()
+            .tabItem {
+                Label("Sorting Algorithms", systemImage: "chart.bar")
             }
-            .navigationViewStyle(StackNavigationViewStyle())
+            .tag(Tab.sorting)
 
+            PathfinderView()
+            .tabItem {
+                Label("Pathfinding", systemImage: "arrowshape.zigzag.forward")
+            }
+            .tag(Tab.pathfinding)
         }
+
+//            .navigationViewStyle(StackNavigationViewStyle())
+
     }
 }
 

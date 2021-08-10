@@ -22,6 +22,8 @@ func getAlgorithmFromInfo(info: AlgorithmInformation, data: [Double]) -> Algorit
         return BubbleSort(info: info, data: data)
     case "Merge Sort":
         return MergeSort(info: info, data: data)
+    case "Quick Sort":
+        return QuickSort(info: info, data: data)
     default:
         return SelectionSort(info: info, data: data) // change to algorithm eventually
     }
@@ -30,24 +32,29 @@ func getAlgorithmFromInfo(info: AlgorithmInformation, data: [Double]) -> Algorit
 /// View that will contain the main view for the sorting algorithms.
 struct SortingView: View{
     @EnvironmentObject var modelData: ModelData
+    @State private var selectedSort: AlgorithmInformation?
+
     
     var body: some View {
         
         // generate random data for the view.
-        let algorithmData: ([Double], Range<Double>) = generateDataForAlgorithm(sizeOfData: 15)
+        let algorithmData: AlgorithmData = generateDataForAlgorithm(sizeOfData: 15)
         
-        List {
-            ForEach(modelData.sortingAlgorithms){ sortingAlgorithmInfo in
-                let selectedAlgorithm: Algorithm = getAlgorithmFromInfo(info: sortingAlgorithmInfo, data: algorithmData.0)
-                
-                NavigationLink(
-                    destination: SortingChart(selectionSortSteps: selectedAlgorithm.run(), algorithmData: algorithmData)){
-                    SortingRowView(algorithm: sortingAlgorithmInfo)
+        NavigationView {
+            List(selection: $selectedSort) {
+                ForEach(modelData.sortingAlgorithms){ sortingAlgorithmInfo in
+                    let selectedAlgorithm: Algorithm = getAlgorithmFromInfo(info: sortingAlgorithmInfo, data: algorithmData.data)
+                    
+                    NavigationLink(
+                        destination: SortingChart(selectionSortSteps: selectedAlgorithm.run(), algorithmData: algorithmData)){
+                        SortingRowView(algorithm: sortingAlgorithmInfo)
+                    }
+                    .tag(sortingAlgorithmInfo.name)
                 }
             }
+            .navigationTitle("Sorting Algorithms")
+            .frame(minWidth: 300)
         }
-        .navigationTitle("Sorting Algorithms")
-        .frame(minWidth: 300)
     }
 }
 

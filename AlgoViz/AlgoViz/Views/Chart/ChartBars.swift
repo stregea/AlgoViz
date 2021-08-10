@@ -33,9 +33,6 @@ struct ChartBars: View {
     var color: Color
     
     var body: some View {
-//        let maxMagnitude = step.data.map{_ in magnitude(of: range)}.max()!
-        
-//        let heightRatio = 1 - CGFloat(maxMagnitude / magnitude(of: range))
         
         return GeometryReader { proxy in
             HStack(alignment: .bottom, spacing: proxy.size.width / 120) {
@@ -65,7 +62,7 @@ struct ChartBars_Previews: PreviewProvider {
         let algorithmData = generateDataForAlgorithm(sizeOfData: 15)
         let selectionSort: Algorithm = SelectionSort(
             info: modelData.sortingAlgorithms[0],
-            data: algorithmData.0
+            data: algorithmData.data
         )
         
         let selectionSortSteps: [AlgorithmStep] = selectionSort.run()
@@ -73,7 +70,7 @@ struct ChartBars_Previews: PreviewProvider {
         
         ChartBars(
             step: selectionSortSteps[selectionSortSteps.count-1],
-            range: algorithmData.1,
+            range: algorithmData.dataRange,
             color: .gray
         )
     }
