@@ -9,11 +9,12 @@ import SwiftUI
 
 /// View that will allow the user to view sorting algorithms.
 struct SortingChart: View {
-            
-    let algorithm: Algorithm
     
-    /// Array to hold each step that an algorithm performs.
-    let algorithmSteps: [AlgorithmStep]
+    /// The data for the algorithm.
+    @Binding var algorithmData: AlgorithmData
+    
+    /// The algorithm to use.
+    let algorithm: Algorithm
     
     /// pointer to keep track of the current step of the array of algorithm steps
     @State private var currentStepIndex: Int = 0
@@ -30,14 +31,14 @@ struct SortingChart: View {
             VStack {
                 
                 // Step counter
-                Text("Step \(currentStepIndex)/\(algorithmSteps.count - 1)")
+                Text("Step \(self.currentStepIndex)/\(self.algorithm.steps!.count - 1)")
                     .font(.headline)
                     .padding()
                 
                 // Display the Chart
                 ChartBars(
-                    step: algorithmSteps[currentStepIndex], // this prevents an array out of bounds error.
-                    range: algorithm.data!.dataRange,
+                    step: self.algorithm.steps![self.currentStepIndex], // this prevents an array out of bounds error.
+                    range: self.algorithm.data!.dataRange,
                     color: .gray
                 )
                 .frame(height: 240)
@@ -48,16 +49,7 @@ struct SortingChart: View {
                     // Previous button
                     Button(
                         action: {
-                            if !reachedStartOfArray {
-                                reachedEndOfArray = false
-                                self.currentStepIndex -= 1
-                                
-                                
-                                // disable this button if at the beginning of the array.
-                                if self.currentStepIndex == 0 {
-                                    reachedStartOfArray = true
-                                }
-                            }
+                            self.handlePreviousButton()
                         }
                     ) {
                         Text("Previous Step")
@@ -66,17 +58,18 @@ struct SortingChart: View {
                     
                     Spacer()
                     
+                    // randomize button -- move to navbar.
+                    Button(action: {
+                        randomizeData()
+                    }){
+                        Text("Randomize")
+                    }
+                    
+                    Spacer()
+                    
                     // Next button
                     Button(action: {
-                        if !reachedEndOfArray {
-                            reachedStartOfArray = false
-                            self.currentStepIndex += 1
-                            
-                            // disable this button if at the end of the array.
-                            if self.currentStepIndex == algorithmSteps.count-1 {
-                                reachedEndOfArray = true
-                            }
-                        }
+                        self.handleNextButton()
                     }) {
                         Text("Next Step")
                     }
@@ -85,21 +78,85 @@ struct SortingChart: View {
                 }
                 .padding()
             }
+        }.onAppear(){
+            randomizeData()
+        }
+    }
+
+    /// Randomize the data being used within each view.
+    private func randomizeData() {
+        // change the data used for the algorithm
+        self.algorithmData = generateDataForAlgorithm(sizeOfData: 15)
+        
+        // update the data and the steps used for the new data.
+        self.algorithm.updateData(data: algorithmData)
+        
+        // change the current step index to 0 to prevent array out of bounds errors.
+        self.currentStepIndex = 0
+        
+        if self.currentStepIndex <= 0 {
+            // Prevent UI mistakes by resetting the buttons.
+            self.resetButtons()
+        }
+    }
+    
+    /// Reset the buttons on the SortingChart View.
+    private func resetButtons() {
+        self.reachedStartOfArray = true
+        self.reachedEndOfArray = false
+    }
+    
+    /// Disable the 'Previous' button.
+    private func disablePreviousButton() {
+        // update the state variable to disable the button.
+        self.reachedStartOfArray = true
+    }
+    
+    /// Disable the 'Next' button.
+    private func disableNextButton() {
+        // update the state variable to disable the button.
+        self.reachedEndOfArray = true
+    }
+    
+    /// Handle how the 'Previous' button will function.
+    private func handlePreviousButton(){
+        if !self.reachedStartOfArray {
+            self.reachedEndOfArray = false
+            self.currentStepIndex -= 1
+            
+            
+            // disable this button if at the beginning of the array.
+            if self.currentStepIndex == 0 {
+                self.disablePreviousButton()
+            }
+        }
+    }
+    
+    /// Handle how the 'Next' button will funcition.
+    private func handleNextButton(){
+        if !reachedEndOfArray {
+            reachedStartOfArray = false
+            self.currentStepIndex += 1
+            
+            // disable this button if at the end of the array.
+            if self.currentStepIndex == algorithm.steps!.count-1 {
+                self.disableNextButton()
+            }
         }
     }
 }
 
 struct SortingChart_Previews: PreviewProvider {
     static var previews: some View {
-        let modelData: ModelData = ModelData()
+        let _: ModelData = ModelData()
         
-        let algorithmData: AlgorithmData = generateDataForAlgorithm(sizeOfData: 15)
+//        var algorithmData: AlgorithmData = generateDataForAlgorithm(sizeOfData: 15)
+//
+//        let selectionSort: Algorithm = SelectionSort(
+//            info: modelData.sortingAlgorithms[0],
+//            data: algorithmData
+//        )
         
-        let selectionSort: Algorithm = SelectionSort(
-            info: modelData.sortingAlgorithms[0],
-            data: algorithmData
-        )
-        
-        SortingChart(algorithm: selectionSort, algorithmSteps: selectionSort.run())
+        //        SortingChart(algorithmData: algorithmData, algorithm: selectionSort)
     }
 }

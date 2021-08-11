@@ -50,35 +50,21 @@ struct SortingView: View{
 
                 ForEach(modelData.sortingAlgorithms){ algorithmInformation in
                     
-                    let algorithm = (selectedAlgorithm == nil) ? getAlgorithmFromInfo(info: algorithmInformation, data: algorithmData) : selectedAlgorithm!
+                    let algorithm = getAlgorithmFromInfo(info: algorithmInformation, data: algorithmData)
                                         
                     NavigationLink(
-                        destination: SortingChart(algorithm: algorithm, algorithmSteps: algorithm.steps!))
+                        destination: SortingChart(algorithmData: $algorithmData, algorithm: algorithm))
                     {
                         SortingRowView(algorithm: algorithmInformation)
                     }
-                    
-                    // update the data when the user goes back to the main screen.
-                    .onDisappear(){
-                        algorithmData = generateDataForAlgorithm(sizeOfData: 15)
-
-                        
-                        // want to eventually be able to get this to work with .onAppear to have view already updated before
-                        // moving into the selected algorithm view.
-                        selectedAlgorithm = getAlgorithmFromInfo(info: algorithmInformation, data: algorithmData)
-                    }
-                    .onAppear(){
-//                        selectedAlgorithm = getAlgorithmFromInfo(info: algorithmInformation, data: algorithmData)
-                    }
                     .tag(algorithmInformation.name)
-                    
                 }
                 
             }
             .navigationTitle("Sorting Algorithms")
             .frame(minWidth: 300)
         }
-//        .focusedValue(\.selectedAlgorithm, $modelData.sortingAlgorithms[index ?? 0])
+        .navigationViewStyle(StackNavigationViewStyle())
 
     }
 }

@@ -100,8 +100,10 @@ class Algorithm {
         return noDuplicatedSteps
     }
     
-    func setAlgorithmData() {
-        
+    /// Update the data used for the algorithm as well as updating it's steps.
+    func updateData(data: AlgorithmData) {
+        self.data = data
+        self.steps = self.run()
     }
     
     /// Perform the algorithm.

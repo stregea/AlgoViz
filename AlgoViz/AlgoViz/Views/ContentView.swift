@@ -30,9 +30,6 @@ struct ContentView: View {
             }
             .tag(Tab.pathfinding)
         }
-
-//            .navigationViewStyle(StackNavigationViewStyle())
-
     }
 }
 
