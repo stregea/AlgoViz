@@ -13,7 +13,7 @@ import Foundation
 func generateDataForAlgorithm(sizeOfData: Int) -> AlgorithmData {
 
     // for now create random data..eventually pass this in from data being created by user.
-    var data: [Double] = (0..<sizeOfData).map{ _ in Double.random(in: 0 ... 99) }
+    var data: [Double] = (0..<sizeOfData).map{ _ in Double.random(in: 1 ... 99) }
     
     // round each of the values.
     for (index, value) in data.enumerated(){
