@@ -65,7 +65,7 @@ class Algorithm {
     /// Object that contains the information to be used for  the sorting algorithms.
     var data: AlgorithmData?
     
-    var steps: [AlgorithmStep]? = nil
+    var steps: [AlgorithmStep]?
     
     /// Initialize an instance of an Algorithm.
     /// - Parameter info: The information that pertains to this Algorithm.
@@ -73,6 +73,19 @@ class Algorithm {
     init(info: AlgorithmInformation?, data: AlgorithmData?){
         self.info = info
         self.data = data
+        self.steps = self.run()
+    }
+    
+    /// Perform the algorithm.
+    /// - Returns: An array of algorithm steps.
+    func run() -> [AlgorithmStep]{
+        return []
+    }
+    
+    /// Update the data used for the algorithm as well as updating it's steps.
+    func updateData(data: AlgorithmData) {
+        self.data = data
+        self.steps = self.run()
     }
     
     /// Remove any duplicated potential duplicated steps of an algorithm.
@@ -98,17 +111,5 @@ class Algorithm {
             }
         }
         return noDuplicatedSteps
-    }
-    
-    /// Update the data used for the algorithm as well as updating it's steps.
-    func updateData(data: AlgorithmData) {
-        self.data = data
-        self.steps = self.run()
-    }
-    
-    /// Perform the algorithm.
-    /// - Returns: An array of algorithm steps.
-    func run() -> [AlgorithmStep]{
-        return []
     }
 }

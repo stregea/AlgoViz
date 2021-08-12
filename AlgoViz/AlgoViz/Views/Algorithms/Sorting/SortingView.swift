@@ -29,7 +29,6 @@ func getAlgorithmFromInfo(info: AlgorithmInformation, data: AlgorithmData) -> Al
         alg = Algorithm(info: info, data: data)
     }
     
-    alg.steps = alg.run()
     return alg
 }
 
@@ -40,16 +39,16 @@ struct SortingView: View{
     @EnvironmentObject var modelData: ModelData
     
     @State private var algorithmData: AlgorithmData = generateDataForAlgorithm(sizeOfData: 15)
-        
-    var body: some View {
     
+    var body: some View {
+        
         NavigationView {
             List {
-
+                
                 ForEach(modelData.sortingAlgorithms){ algorithmInformation in
                     
                     let algorithm = getAlgorithmFromInfo(info: algorithmInformation, data: algorithmData)
-                                        
+                    
                     NavigationLink(
                         destination: Chart(algorithmData: $algorithmData, algorithm: algorithm))
                     {
