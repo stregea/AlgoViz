@@ -40,9 +40,7 @@ struct SortingView: View{
     @EnvironmentObject var modelData: ModelData
     
     @State private var algorithmData: AlgorithmData = generateDataForAlgorithm(sizeOfData: 15)
-    
-    @State private var selectedAlgorithm: Algorithm? = nil
-    
+        
     var body: some View {
     
         NavigationView {
@@ -53,7 +51,7 @@ struct SortingView: View{
                     let algorithm = getAlgorithmFromInfo(info: algorithmInformation, data: algorithmData)
                                         
                     NavigationLink(
-                        destination: SortingChart(algorithmData: $algorithmData, algorithm: algorithm))
+                        destination: Chart(algorithmData: $algorithmData, algorithm: algorithm))
                     {
                         SortingRowView(algorithm: algorithmInformation)
                     }
@@ -65,7 +63,6 @@ struct SortingView: View{
             .frame(minWidth: 300)
         }
         .navigationViewStyle(StackNavigationViewStyle())
-
     }
 }
 
