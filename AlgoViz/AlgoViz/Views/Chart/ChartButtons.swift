@@ -7,9 +7,10 @@
 
 import SwiftUI
 
+/// View that will display and handle the buttons below the chart within the ChartView.
 struct ChartButtons: View {
     
-    /// The algorithm to use.
+    /// The algorithm currently being used.
     let algorithm: Algorithm
     
     /// pointer to keep track of the current step of the array of algorithm steps

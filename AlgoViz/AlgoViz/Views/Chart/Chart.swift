@@ -50,8 +50,13 @@ struct Chart: View {
                 )
                 .padding()
                 
+                Divider()
+                
+                ChartDescription(
+                    algorithm: algorithm
+                )
+                
             } // VStack
-            .navigationBarTitle(title)
             .toolbar(content: {
                 // randomize button -- move to navbar.
                 Button(action: {
@@ -62,6 +67,8 @@ struct Chart: View {
                 
             })
         } // ScrollView
+        .navigationBarTitle(title)
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     /// Randomize the data being used within each view.
