@@ -38,6 +38,7 @@ struct SortingView: View{
     /// The environment object,
     @EnvironmentObject var modelData: ModelData
     
+    /// The data the algorithms will be using.
     @State private var algorithmData: AlgorithmData = generateDataForAlgorithm(sizeOfData: 15)
     
     var body: some View {
@@ -49,10 +50,9 @@ struct SortingView: View{
                     
                     let algorithm = getAlgorithmFromInfo(info: algorithmInformation, data: algorithmData)
                     
-                    NavigationLink(
-                        destination: Chart(algorithmData: $algorithmData, algorithm: algorithm))
+                    NavigationLink(destination: Chart(algorithmData: $algorithmData, algorithm: algorithm))
                     {
-                        SortingRowView(algorithm: algorithmInformation)
+                        SortingRowView(algorithmInfo: algorithmInformation)
                     }
                     .tag(algorithmInformation.name)
                 }

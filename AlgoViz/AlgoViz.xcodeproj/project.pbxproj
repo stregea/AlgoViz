@@ -163,8 +163,8 @@
 				E6B6A1D326B709D000D9E93E /* ChartCapsule.swift */,
 				E632455C26BC02FE0063E0CD /* ChartBars.swift */,
 				E6CA032826C5716C005DF0E4 /* ChartButtons.swift */,
-				E6CA032A26C572CC005DF0E4 /* Chart.swift */,
 				E6CA032C26C57365005DF0E4 /* ChartDescription.swift */,
+				E6CA032A26C572CC005DF0E4 /* Chart.swift */,
 			);
 			path = Chart;
 			sourceTree = "<group>";

@@ -8,27 +8,30 @@
 import SwiftUI
 
 struct SortingRowView: View {
-    var algorithm: AlgorithmInformation
+    
+    var algorithmInfo: AlgorithmInformation
     
     
     var body: some View {
         
         // Modify the description to contain only a certain number of characters..
-        let endOffset:Int = algorithm.description.count < 100 ? algorithm.description.count : 100
+        let endOffset:Int = algorithmInfo.description.count < 100 ? algorithmInfo.description.count : 100
         
-        let start = algorithm.description.index(algorithm.description.startIndex, offsetBy: 0)
-        let end = algorithm.description.index(algorithm.description.startIndex, offsetBy: endOffset)
+        // Build the string preview to display
+        let start = algorithmInfo.description.index(algorithmInfo.description.startIndex, offsetBy: 0)
+        let end = algorithmInfo.description.index(algorithmInfo.description.startIndex, offsetBy: endOffset)
         let range = start..<end
-        let description: String = algorithm.description[range] + "..."
+        
+        let previewDescription: String = algorithmInfo.description[range] + "..."
         
         HStack {
             // place image here eventually?
             
             VStack(alignment: .leading) {
-                Text(algorithm.name)
+                Text(algorithmInfo.name)
                     .bold()
                 
-                Text(description)
+                Text(previewDescription)
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
@@ -39,8 +42,7 @@ struct SortingRowView: View {
 
 struct SortingRowView_Previews: PreviewProvider {
     static var previews: some View {
-        SortingRowView(algorithm: ModelData().sortingAlgorithms[0])
+        SortingRowView(algorithmInfo: ModelData().sortingAlgorithms[0])
             .previewLayout(.fixed(width: 300, height: 70))
-
     }
 }

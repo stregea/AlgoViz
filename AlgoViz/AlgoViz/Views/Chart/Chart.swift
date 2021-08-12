@@ -16,7 +16,7 @@ struct Chart: View {
     let algorithm: Algorithm
     
     /// pointer to keep track of the current step of the array of algorithm steps
-    @State private var currentStepIndex: Int = 0
+    @State private var stepIndex: Int = 0
     
     /// Boolean to determine if the pointer of the array has reached the start of the array
     @State private var reachedStartOfArray: Bool = true
@@ -31,20 +31,21 @@ struct Chart: View {
             VStack {
                 
                 // Step counter
-                Text("Step \(self.currentStepIndex)/\(self.algorithm.steps!.count - 1)")
+                Text("Step \(self.stepIndex)/\(self.algorithm.steps!.count - 1)")
                     .font(.headline)
                     .padding()
                 
                 // Display the Chart
                 ChartBars(
-                    step: self.algorithm.steps![self.currentStepIndex], // this prevents an array out of bounds error.
+                    step: self.algorithm.steps![self.stepIndex],
                     range: self.algorithm.data!.dataRange,
                     color: .gray
                 )
                 .frame(height: 240)
                 
+                // Display the buttons
                 ChartButtons(algorithm: algorithm,
-                             stepIndex: $currentStepIndex,
+                             stepIndex: $stepIndex,
                              reachedStartOfArray: $reachedStartOfArray,
                              reachedEndOfArray: $reachedEndOfArray
                 )
@@ -52,6 +53,7 @@ struct Chart: View {
                 
                 Divider()
                 
+                // Display the discription.
                 ChartDescription(
                     algorithm: algorithm
                 )
@@ -80,9 +82,9 @@ struct Chart: View {
         self.algorithm.updateData(data: algorithmData)
         
         // change the current step index to 0 to prevent array out of bounds errors.
-        self.currentStepIndex = 0
+        self.stepIndex = 0
         
-        if self.currentStepIndex <= 0 {
+        if self.stepIndex <= 0 {
             // Prevent UI mistakes by resetting the buttons.
             self.resetButtons()
         }

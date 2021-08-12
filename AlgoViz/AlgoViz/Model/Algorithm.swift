@@ -65,6 +65,7 @@ class Algorithm {
     /// Object that contains the information to be used for  the sorting algorithms.
     var data: AlgorithmData?
     
+    /// Array to contain each iteration (steps) of the sort.
     var steps: [AlgorithmStep]?
     
     /// Initialize an instance of an Algorithm.
