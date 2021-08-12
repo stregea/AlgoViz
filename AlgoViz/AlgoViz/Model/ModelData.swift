@@ -22,4 +22,7 @@ final class ModelData: ObservableObject {
     var pathfindingAlgorithms: [AlgorithmInformation] {
         algorithmInformation.filter { $0.isSortingAlgorithm }
     }
+    
+    /// The size of the data set each algorithm will use.
+    var dataSetSize: Int = 20
 }

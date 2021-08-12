@@ -39,7 +39,7 @@ struct SortingView: View{
     @EnvironmentObject var modelData: ModelData
     
     /// The data the algorithms will be using.
-    @State private var algorithmData: AlgorithmData = generateDataForAlgorithm(sizeOfData: 15)
+    @State private var algorithmData: AlgorithmData = generateDataForAlgorithm(sizeOfData: ModelData().dataSetSize) // change way of getting constant size later.
     
     var body: some View {
         

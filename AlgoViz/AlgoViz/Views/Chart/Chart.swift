@@ -9,6 +9,9 @@ import SwiftUI
 
 /// View that will allow the user to view sorting algorithms.
 struct Chart: View {
+    /// The environment object,
+    @EnvironmentObject var modelData: ModelData
+    
     /// The data for the algorithm.
     @Binding var algorithmData: AlgorithmData
     
@@ -76,7 +79,7 @@ struct Chart: View {
     /// Randomize the data being used within each view.
     private func randomizeData() {
         // change the data used for the algorithm
-        self.algorithmData = generateDataForAlgorithm(sizeOfData: 15)
+        self.algorithmData = generateDataForAlgorithm(sizeOfData: modelData.dataSetSize)
         
         // update the data and the steps used for the new data.
         self.algorithm.updateData(data: algorithmData)
