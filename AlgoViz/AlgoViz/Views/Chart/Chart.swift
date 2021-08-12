@@ -31,46 +31,51 @@ struct Chart: View {
         let title: String = (algorithm.info == nil) ? "Unknown Algorithm" : algorithm.info!.name
         
         ScrollView {
-            VStack {
-                
-                // Step counter
-                Text("Step \(self.stepIndex)/\(self.algorithm.steps!.count - 1)")
-                    .font(.headline)
+            
+            if algorithm.steps != nil && algorithm.steps!.count > 0 {
+                VStack {
+                    // Step counter
+                    Text("Step \(self.stepIndex)/\(self.algorithm.steps!.count - 1)")
+                        .font(.headline)
+                        .padding()
+                    
+                    // Display the Chart
+                    ChartBars(
+                        step: self.algorithm.steps![self.stepIndex],
+                        range: self.algorithm.data!.dataRange,
+                        color: .gray
+                    )
+                    .frame(height: 240)
+                    
+                    // Display the buttons
+                    ChartButtons(algorithm: algorithm,
+                                 stepIndex: $stepIndex,
+                                 reachedStartOfArray: $reachedStartOfArray,
+                                 reachedEndOfArray: $reachedEndOfArray
+                    )
                     .padding()
-                
-                // Display the Chart
-                ChartBars(
-                    step: self.algorithm.steps![self.stepIndex],
-                    range: self.algorithm.data!.dataRange,
-                    color: .gray
-                )
-                .frame(height: 240)
-                
-                // Display the buttons
-                ChartButtons(algorithm: algorithm,
-                             stepIndex: $stepIndex,
-                             reachedStartOfArray: $reachedStartOfArray,
-                             reachedEndOfArray: $reachedEndOfArray
-                )
-                .padding()
-                
-                Divider()
-                
-                // Display the discription.
-                ChartDescription(
-                    algorithm: algorithm
-                )
-                
-            } // VStack
-            .toolbar(content: {
-                // randomize button -- move to navbar.
-                Button(action: {
-                    randomizeData()
-                }){
-                    Image(systemName: "shuffle")
-                }
-                
-            })
+                    
+                    Divider()
+                    
+                    // Display the discription.
+                    ChartDescription(
+                        algorithm: algorithm
+                    )
+                    
+                } // VStack
+                .toolbar(content: {
+                    // randomize button -- move to navbar.
+                    Button(action: {
+                        randomizeData()
+                    }){
+                        Image(systemName: "shuffle")
+                    }
+                    
+                })
+            }
+            else {
+                Text("No data available for \(title)")
+            }
         } // ScrollView
         .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)

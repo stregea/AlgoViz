@@ -34,13 +34,11 @@ struct ChartCapsule: View {
 
     var body: some View {
         VStack {
+            Spacer()
+            
             Capsule()
                 .fill(Color.white)
                 .frame(height: height * heightRatio)
-//                .offset(x: 0, y: height * -offsetRatio)
-            
-//            Text(text)
-//                .font(.headline)
         }
     }
 }

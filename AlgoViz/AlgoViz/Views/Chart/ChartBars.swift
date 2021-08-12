@@ -49,7 +49,6 @@ struct ChartBars: View {
                     .transition(.slide)
                     .animation(.ripple(index: index))
                 }
-//                .offset(x: 0, y: proxy.size.height * heightRatio)
             }
             .padding()
         }
