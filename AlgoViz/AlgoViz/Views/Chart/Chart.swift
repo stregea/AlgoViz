@@ -107,6 +107,14 @@ struct Chart: View {
 
 struct Chart_Previews: PreviewProvider {
     static var previews: some View {
-        let _: ModelData = ModelData()
+        let modelData: ModelData = ModelData()
+        let algorithmData = generateDataForAlgorithm(sizeOfData: modelData.dataSetSize)
+        let selectionSort: Algorithm = SelectionSort(
+            info: modelData.sortingAlgorithms[0],
+            data: algorithmData
+        )
+
+        
+        Chart(algorithmData: .constant(algorithmData), algorithm: selectionSort)
     }
 }

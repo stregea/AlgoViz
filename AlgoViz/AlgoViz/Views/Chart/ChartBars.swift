@@ -58,17 +58,15 @@ struct ChartBars: View {
 struct ChartBars_Previews: PreviewProvider {
     static var previews: some View {
         let modelData: ModelData = ModelData()
-        let algorithmData = generateDataForAlgorithm(sizeOfData: 15)
+        let algorithmData = generateDataForAlgorithm(sizeOfData: modelData.dataSetSize)
         let selectionSort: Algorithm = SelectionSort(
             info: modelData.sortingAlgorithms[0],
             data: algorithmData
         )
-        
-        let selectionSortSteps: [AlgorithmStep] = selectionSort.run()
-        
+            
         
         ChartBars(
-            step: selectionSortSteps[selectionSortSteps.count-1],
+            step: selectionSort.steps![selectionSort.steps!.count-1],
             range: algorithmData.dataRange,
             color: .gray
         )
