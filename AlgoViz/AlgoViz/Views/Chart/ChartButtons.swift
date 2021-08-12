@@ -88,8 +88,19 @@ struct ChartButtons: View {
     }
 }
 
-//struct ChartButtons_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChartButtons()
-//    }
-//}
+struct ChartButtons_Previews: PreviewProvider {
+    static var previews: some View {
+        let modelData: ModelData = ModelData()
+        let algorithmData = generateDataForAlgorithm(sizeOfData: modelData.dataSetSize)
+        let selectionSort: Algorithm = SelectionSort(
+            info: modelData.sortingAlgorithms[0],
+            data: algorithmData
+        )
+        ChartButtons(
+            algorithm: selectionSort,
+            stepIndex: .constant(0),
+            reachedStartOfArray: .constant(true),
+            reachedEndOfArray: .constant(false)
+        )
+    }
+}

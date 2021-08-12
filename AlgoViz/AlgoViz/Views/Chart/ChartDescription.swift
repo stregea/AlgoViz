@@ -27,9 +27,14 @@ struct ChartDescription: View {
     }
 }
 
-//struct ChartDescription_Previews: PreviewProvider {
-//    static var previews: some View {
-//
-//        ChartDescription()
-//    }
-//}
+struct ChartDescription_Previews: PreviewProvider {
+    static var previews: some View {
+                let modelData: ModelData = ModelData()
+                let algorithmData = generateDataForAlgorithm(sizeOfData: modelData.dataSetSize)
+                let selectionSort: Algorithm = SelectionSort(
+                    info: modelData.sortingAlgorithms[0],
+                    data: algorithmData
+                )
+        ChartDescription(algorithm: selectionSort)
+    }
+}
