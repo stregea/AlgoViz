@@ -29,7 +29,6 @@ func getAlgorithmFromInfo(info: AlgorithmInformation, data: AlgorithmData) -> Al
         alg = Algorithm(info: info, data: data)
     }
     
-    alg.steps = alg.run()
     return alg
 }
 
@@ -39,47 +38,30 @@ struct SortingView: View{
     /// The environment object,
     @EnvironmentObject var modelData: ModelData
     
-    @State private var algorithmData: AlgorithmData = generateDataForAlgorithm(sizeOfData: 15)
-    
-    @State private var selectedAlgorithm: Algorithm? = nil
+    /// The data the algorithms will be using.
+    @State private var algorithmData: AlgorithmData = generateDataForAlgorithm(sizeOfData: ModelData().dataSetSize) // change way of getting constant size later.
     
     var body: some View {
-    
+        
         NavigationView {
             List {
-
+                
                 ForEach(modelData.sortingAlgorithms){ algorithmInformation in
                     
-                    let algorithm = (selectedAlgorithm == nil) ? getAlgorithmFromInfo(info: algorithmInformation, data: algorithmData) : selectedAlgorithm!
-                                        
-                    NavigationLink(
-                        destination: SortingChart(algorithm: algorithm, algorithmSteps: algorithm.steps!))
-                    {
-                        SortingRowView(algorithm: algorithmInformation)
-                    }
+                    let algorithm = getAlgorithmFromInfo(info: algorithmInformation, data: algorithmData)
                     
-                    // update the data when the user goes back to the main screen.
-                    .onDisappear(){
-                        algorithmData = generateDataForAlgorithm(sizeOfData: 15)
-
-                        
-                        // want to eventually be able to get this to work with .onAppear to have view already updated before
-                        // moving into the selected algorithm view.
-                        selectedAlgorithm = getAlgorithmFromInfo(info: algorithmInformation, data: algorithmData)
-                    }
-                    .onAppear(){
-//                        selectedAlgorithm = getAlgorithmFromInfo(info: algorithmInformation, data: algorithmData)
+                    NavigationLink(destination: Chart(algorithmData: $algorithmData, algorithm: algorithm))
+                    {
+                        SortingRowView(algorithmInfo: algorithmInformation)
                     }
                     .tag(algorithmInformation.name)
-                    
                 }
                 
             }
             .navigationTitle("Sorting Algorithms")
             .frame(minWidth: 300)
         }
-//        .focusedValue(\.selectedAlgorithm, $modelData.sortingAlgorithms[index ?? 0])
-
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

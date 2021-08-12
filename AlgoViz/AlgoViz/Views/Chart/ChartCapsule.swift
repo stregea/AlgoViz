@@ -39,8 +39,8 @@ struct ChartCapsule: View {
                 .frame(height: height * heightRatio)
 //                .offset(x: 0, y: height * -offsetRatio)
             
-            Text(text)
-                .font(.headline)
+//            Text(text)
+//                .font(.headline)
         }
     }
 }

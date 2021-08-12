@@ -30,15 +30,12 @@ struct ContentView: View {
             }
             .tag(Tab.pathfinding)
         }
-
-//            .navigationViewStyle(StackNavigationViewStyle())
-
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-            .environmentObject(ModelData())
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//            .environmentObject(ModelData())
+//    }
+//}
