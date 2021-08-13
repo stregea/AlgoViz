@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct PathfinderView: View{
+    @State var maze: Maze = generateMaze(rows: 20, columns: 20, sparcityOfWalls: 0.2)
     var body: some View {
-        VStack {
-            Text("Pathfinder View")
-                .padding()
+        
+        ScrollView {
+            MazeGrid(maze: $maze)
         }
     }
 }
