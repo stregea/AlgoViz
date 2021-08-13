@@ -26,14 +26,23 @@ enum CellType: Character {
 }
 
 /// Struct to contain the information about where the cell will exist on the plane.
-struct Coordinates: Hashable {
+struct Coordinates: Hashable, Equatable {
     /// The 'x' position within the 2D plane.
     var x: Int
     
     /// The 'y' position within the 2D plane.
     var y: Int
+
+    /// Determine if two Coordinates are equal.
+    /// - Parameter lhs: The first Coordinate used for comparison.
+    /// - Parameter rhs: The second Coordinate used for comparison.
+    /// - Returns: True if the lhs parameter is the same coordinate as the rhs parameter.
+    static func == (lhs: Coordinates, rhs: Coordinates) -> Bool {
+        return lhs.x == rhs.x && lhs.y == rhs.y
+    }
     
-    /// The hash for the struct.
+    /// The Coordinate's hash.
+    /// - Parameter hasher: Object used to hash the Coordinate.
     func hash(into hasher: inout Hasher) {
         hasher.combine(x.hashValue ^ y.hashValue)
     }
@@ -49,7 +58,15 @@ struct Cell {
 }
 
 /// 2D array to represent a collection of Cell's.
-typealias Maze = [[Cell]]
+//typealias Maze = [[Cell]]
+
+struct Maze: CustomStringConvertible {
+    var maze: [ [Cell] ]
+    var start: Cell
+    var goal: Cell
+    
+    var description: String { return mazeToString(maze: self.maze)}
+}
 
 /// Generate a random maze.
 /// - Parameter rows: The number of rows to determine the height of the  maze.
@@ -67,7 +84,7 @@ func generateMaze(rows: Int, columns: Int, sparcityOfWalls: Double) -> Maze {
     let empyCells: [Cell] = [Cell](repeating: cell, count: columns)
     
     // Initialize a maze full of empty cell's.
-    var maze: Maze = Maze(repeating: empyCells, count: rows)
+    var maze: [ [Cell] ] = [ [Cell] ](repeating: empyCells, count: rows)
     
     // place walls within the maze.
     for row in 0..<rows {
@@ -106,13 +123,35 @@ func generateMaze(rows: Int, columns: Int, sparcityOfWalls: Double) -> Maze {
         
     } // outer-for
     
-    return maze
+    // Determine start and end coordinates.
+    let startPoint: Coordinates = Coordinates(x: Int.random(in: 0..<rows), y: Int.random(in: 0..<columns))
+    let endGoal: Coordinates = Coordinates(x: Int.random(in: 0..<rows), y: Int.random(in: 0..<columns))
+
+    // Create the cells.
+    let startCell: Cell = Cell(type: .Start, coordinates: startPoint)
+    let goalCell: Cell = Cell(type: .Goal, coordinates: endGoal)
+    
+    // Place the start and end cells within the maze.
+    maze[startPoint.x][startPoint.y] = startCell
+    maze[endGoal.x][endGoal.y] = goalCell
+
+    return Maze(maze: maze, start: startCell, goal: goalCell)
 }
 
-/// Print out the maze onto the console.
-/// - Parameter maze: The maze to print.
-func printMaze(maze: Maze) {
-   for i in 0..<maze.count {
-    print(String(maze[i].map{ $0.type.rawValue }))
-   }
+/// Convert a 2D array of Cells into a string.
+/// - Parameter maze: The array of cells to convert to a string.
+/// - Returns: A string representation of a 2D array of cells.
+func mazeToString(maze: [[Cell]]) -> String {
+    var mazeString: String = ""
+    
+    for row in maze {
+        
+        for cell in row {
+            mazeString += "\(cell.type.rawValue)"
+        }
+        
+        mazeString += "\n"
+    }
+
+    return mazeString
 }
