@@ -57,15 +57,36 @@ struct Cell {
     var coordinates: Coordinates
 }
 
-/// 2D array to represent a collection of Cell's.
-//typealias Maze = [[Cell]]
-
+/// Struct used to represent a maze.
 struct Maze: CustomStringConvertible {
+    /// 2D array to represent a collection of Cell's.
     var maze: [ [Cell] ]
+    
+    /// The starting cell of the maze.
     var start: Cell
+    
+    /// The end goal cell of the maze.
     var goal: Cell
     
     var description: String { return mazeToString(maze: self.maze)}
+}
+
+/// Convert a 2D array of Cells into a string.
+/// - Parameter maze: The array of cells to convert to a string.
+/// - Returns: A string representation of a 2D array of cells.
+func mazeToString(maze: [[Cell]]) -> String {
+    var mazeString: String = ""
+    
+    for row in maze {
+        
+        for cell in row {
+            mazeString += "\(cell.type.rawValue)"
+        }
+        
+        mazeString += "\n"
+    }
+
+    return mazeString
 }
 
 /// Generate a random maze.
@@ -138,20 +159,37 @@ func generateMaze(rows: Int, columns: Int, sparcityOfWalls: Double) -> Maze {
     return Maze(maze: maze, start: startCell, goal: goalCell)
 }
 
-/// Convert a 2D array of Cells into a string.
-/// - Parameter maze: The array of cells to convert to a string.
-/// - Returns: A string representation of a 2D array of cells.
-func mazeToString(maze: [[Cell]]) -> String {
-    var mazeString: String = ""
+/// This was taken from https://freecontent.manning.com/solving-mazes-with-swift/
+/// Still not entirely sure how this works yet.
+func successorsForMaze(maze: Maze) -> (Coordinates) -> [Coordinates] {
     
-    for row in maze {
+    /// Check above, below, left, and right of a given location within the maze
+    func successors(coords: Coordinates) -> [Coordinates] { //no diagonals
         
-        for cell in row {
-            mazeString += "\(cell.type.rawValue)"
+        // list to contain valid movements from given location (Successors).
+        var availableCoordinates: [Coordinates] = []
+        
+        // Check above of given coordinate
+        if (coords.x + 1 < maze.maze.count) && (maze.maze[coords.x + 1][coords.y].type != .Wall) {
+            availableCoordinates.append(Coordinates(x: coords.x + 1, y: coords.y))
         }
         
-        mazeString += "\n"
+        // Check left of given coordinate
+        if (coords.x - 1 >= 0) && (maze.maze[coords.x - 1][coords.y].type != .Wall) {
+            availableCoordinates.append(Coordinates(x: coords.x - 1, y: coords.y))
+        }
+        
+        // Check right of given coordinate
+        if (coords.y + 1 < maze.maze[0].count) && (maze.maze[coords.x][coords.y + 1].type != .Wall) {
+            availableCoordinates.append(Coordinates(x: coords.x, y: coords.y + 1))
+        }
+        
+        // Check left of given coordinate
+        if (coords.y - 1 >= 0) && (maze.maze[coords.x][coords.y - 1].type != .Wall) {
+            availableCoordinates.append(Coordinates(x: coords.x, y: coords.y - 1))
+        }
+     
+        return availableCoordinates
     }
-
-    return mazeString
+    return successors
 }
