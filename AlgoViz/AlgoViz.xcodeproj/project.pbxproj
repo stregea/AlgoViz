@@ -17,6 +17,7 @@
 		E65115F926C06B2000595010 /* BubbleSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65115F826C06B2000595010 /* BubbleSort.swift */; };
 		E66EC5F826C1FD28000A7535 /* AlgorithmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66EC5F726C1FD28000A7535 /* AlgorithmData.swift */; };
 		E675EE6F26C692D800E9D3A2 /* AlgoVizLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E675EE6E26C692D800E9D3A2 /* AlgoVizLaunch.storyboard */; };
+		E675EE7226C69C0100E9D3A2 /* Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = E675EE7126C69C0100E9D3A2 /* Maze.swift */; };
 		E6B6A1D426B709D000D9E93E /* ChartCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B6A1D326B709D000D9E93E /* ChartCapsule.swift */; };
 		E6B6A1DD26B70ADB00D9E93E /* Algorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B6A1DC26B70ADB00D9E93E /* Algorithm.swift */; };
 		E6B6A1E026B70CD100D9E93E /* algorithms.json in Resources */ = {isa = PBXBuildFile; fileRef = E6B6A1DF26B70CD100D9E93E /* algorithms.json */; };
@@ -47,6 +48,7 @@
 		E65115F826C06B2000595010 /* BubbleSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleSort.swift; sourceTree = "<group>"; };
 		E66EC5F726C1FD28000A7535 /* AlgorithmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmData.swift; sourceTree = "<group>"; };
 		E675EE6E26C692D800E9D3A2 /* AlgoVizLaunch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlgoVizLaunch.storyboard; sourceTree = "<group>"; };
+		E675EE7126C69C0100E9D3A2 /* Maze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maze.swift; sourceTree = "<group>"; };
 		E6B6A1D326B709D000D9E93E /* ChartCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCapsule.swift; sourceTree = "<group>"; };
 		E6B6A1DC26B70ADB00D9E93E /* Algorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
 		E6B6A1DF26B70CD100D9E93E /* algorithms.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = algorithms.json; sourceTree = "<group>"; };
@@ -131,9 +133,18 @@
 			path = BubbleSort;
 			sourceTree = "<group>";
 		};
+		E675EE7026C69BED00E9D3A2 /* Maze */ = {
+			isa = PBXGroup;
+			children = (
+				E675EE7126C69C0100E9D3A2 /* Maze.swift */,
+			);
+			path = Maze;
+			sourceTree = "<group>";
+		};
 		E6B6A1C626B7058F00D9E93E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E675EE7026C69BED00E9D3A2 /* Maze */,
 				E6B6A1E626B717F100D9E93E /* Algorithms */,
 				E6B6A1EF26B7189E00D9E93E /* Helpers */,
 				E6B6A1F026B71B9700D9E93E /* ModelData.swift */,
@@ -357,6 +368,7 @@
 			files = (
 				E6CA032926C5716C005DF0E4 /* ChartButtons.swift in Sources */,
 				E6DF90A526AE4F2300E1967D /* ContentView.swift in Sources */,
+				E675EE7226C69C0100E9D3A2 /* Maze.swift in Sources */,
 				E65115F626C064C500595010 /* InsertionSort.swift in Sources */,
 				E6CA032D26C57365005DF0E4 /* ChartDescription.swift in Sources */,
 				E6DF90B526AE5A5000E1967D /* SortingView.swift in Sources */,
