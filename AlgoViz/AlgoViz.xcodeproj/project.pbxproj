@@ -16,6 +16,7 @@
 		E65115F626C064C500595010 /* InsertionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65115F526C064C500595010 /* InsertionSort.swift */; };
 		E65115F926C06B2000595010 /* BubbleSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65115F826C06B2000595010 /* BubbleSort.swift */; };
 		E66EC5F826C1FD28000A7535 /* AlgorithmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66EC5F726C1FD28000A7535 /* AlgorithmData.swift */; };
+		E675EE6F26C692D800E9D3A2 /* AlgoVizLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E675EE6E26C692D800E9D3A2 /* AlgoVizLaunch.storyboard */; };
 		E6B6A1D426B709D000D9E93E /* ChartCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B6A1D326B709D000D9E93E /* ChartCapsule.swift */; };
 		E6B6A1DD26B70ADB00D9E93E /* Algorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B6A1DC26B70ADB00D9E93E /* Algorithm.swift */; };
 		E6B6A1E026B70CD100D9E93E /* algorithms.json in Resources */ = {isa = PBXBuildFile; fileRef = E6B6A1DF26B70CD100D9E93E /* algorithms.json */; };
@@ -45,6 +46,7 @@
 		E65115F526C064C500595010 /* InsertionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertionSort.swift; sourceTree = "<group>"; };
 		E65115F826C06B2000595010 /* BubbleSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleSort.swift; sourceTree = "<group>"; };
 		E66EC5F726C1FD28000A7535 /* AlgorithmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmData.swift; sourceTree = "<group>"; };
+		E675EE6E26C692D800E9D3A2 /* AlgoVizLaunch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlgoVizLaunch.storyboard; sourceTree = "<group>"; };
 		E6B6A1D326B709D000D9E93E /* ChartCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCapsule.swift; sourceTree = "<group>"; };
 		E6B6A1DC26B70ADB00D9E93E /* Algorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
 		E6B6A1DF26B70CD100D9E93E /* algorithms.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = algorithms.json; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 				E6DF90B326AE568D00E1967D /* Views */,
 				E6DF90A226AE4F2300E1967D /* AlgoVizApp.swift */,
 				E6DF90A626AE4F2500E1967D /* Assets.xcassets */,
+				E675EE6E26C692D800E9D3A2 /* AlgoVizLaunch.storyboard */,
 				E6DF90AB26AE4F2500E1967D /* Info.plist */,
 				E6DF90A826AE4F2500E1967D /* Preview Content */,
 			);
@@ -337,6 +340,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E675EE6F26C692D800E9D3A2 /* AlgoVizLaunch.storyboard in Resources */,
 				E6B6A1FA26B7831700D9E93E /* sortingdata.json in Resources */,
 				E6DF90AA26AE4F2500E1967D /* Preview Assets.xcassets in Resources */,
 				E6B6A1E026B70CD100D9E93E /* algorithms.json in Resources */,
