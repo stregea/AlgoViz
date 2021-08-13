@@ -10,21 +10,24 @@ import Foundation
 struct Stack<T> {
     var array: [T] = []
     
-    
+    /// Push an element onto the stack.
+    /// - Parameter element: The element to place onto the stack.
     mutating func push(_ element: T) {
         array.append(element)
     }
     
+    /// Pop an element from the stack and remove it.
+    /// - Returns: The last element from the array, nil if there are no elements to pop.
     mutating func pop() -> T? {
         if !array.isEmpty {
-            let index = array.count - 1
-            let poppedValue = array.remove(at: index)
-            return poppedValue
+            return array.removeLast()
         } else {
             return nil
         }
     }
     
+    /// Peek an element from the stack.
+    /// - Returns: The last element from the array, nil if there are no elements to pop.
     func peek() -> T? {
         if !array.isEmpty {
             return array.last
@@ -33,12 +36,16 @@ struct Stack<T> {
         }
     }
     
-    func isEmpty() -> Bool{
-        return array.count == 0
-    }
-    
+    /// Determine the size of the stack.
+    /// - Returns: The number of elements existing within the stack.
     func size() -> Int {
         return array.count
     }
+    
+    /// Determine if the stack is empty.
+    /// - Returns: True if the stack is empty, false otherwise.
+    func isEmpty() -> Bool{
+        return self.size() == 0
+    }
+    
 }
-

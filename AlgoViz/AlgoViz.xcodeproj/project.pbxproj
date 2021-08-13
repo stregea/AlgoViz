@@ -18,6 +18,8 @@
 		E66EC5F826C1FD28000A7535 /* AlgorithmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66EC5F726C1FD28000A7535 /* AlgorithmData.swift */; };
 		E675EE6F26C692D800E9D3A2 /* AlgoVizLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E675EE6E26C692D800E9D3A2 /* AlgoVizLaunch.storyboard */; };
 		E675EE7226C69C0100E9D3A2 /* Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = E675EE7126C69C0100E9D3A2 /* Maze.swift */; };
+		E675EE7426C6C87100E9D3A2 /* PathStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E675EE7326C6C87100E9D3A2 /* PathStep.swift */; };
+		E675EE7626C6CA8000E9D3A2 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E675EE7526C6CA8000E9D3A2 /* Queue.swift */; };
 		E6B6A1D426B709D000D9E93E /* ChartCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B6A1D326B709D000D9E93E /* ChartCapsule.swift */; };
 		E6B6A1DD26B70ADB00D9E93E /* Algorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B6A1DC26B70ADB00D9E93E /* Algorithm.swift */; };
 		E6B6A1E026B70CD100D9E93E /* algorithms.json in Resources */ = {isa = PBXBuildFile; fileRef = E6B6A1DF26B70CD100D9E93E /* algorithms.json */; };
@@ -49,6 +51,8 @@
 		E66EC5F726C1FD28000A7535 /* AlgorithmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmData.swift; sourceTree = "<group>"; };
 		E675EE6E26C692D800E9D3A2 /* AlgoVizLaunch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlgoVizLaunch.storyboard; sourceTree = "<group>"; };
 		E675EE7126C69C0100E9D3A2 /* Maze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maze.swift; sourceTree = "<group>"; };
+		E675EE7326C6C87100E9D3A2 /* PathStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PathStep.swift; path = AlgoViz/Model/Maze/PathStep.swift; sourceTree = SOURCE_ROOT; };
+		E675EE7526C6CA8000E9D3A2 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		E6B6A1D326B709D000D9E93E /* ChartCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCapsule.swift; sourceTree = "<group>"; };
 		E6B6A1DC26B70ADB00D9E93E /* Algorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
 		E6B6A1DF26B70CD100D9E93E /* algorithms.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = algorithms.json; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 		E6B6A1E826B7180200D9E93E /* Pathfinding */ = {
 			isa = PBXGroup;
 			children = (
+				E675EE7326C6C87100E9D3A2 /* PathStep.swift */,
 			);
 			path = Pathfinding;
 			sourceTree = "<group>";
@@ -232,6 +237,7 @@
 				E6B6A1E426B717B000D9E93E /* LoadJSON.swift */,
 				E6B6A1F726B73A0200D9E93E /* Generator.swift */,
 				E61DBF5B26C151BF00730EE0 /* Stack.swift */,
+				E675EE7526C6CA8000E9D3A2 /* Queue.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -368,6 +374,7 @@
 			files = (
 				E6CA032926C5716C005DF0E4 /* ChartButtons.swift in Sources */,
 				E6DF90A526AE4F2300E1967D /* ContentView.swift in Sources */,
+				E675EE7426C6C87100E9D3A2 /* PathStep.swift in Sources */,
 				E675EE7226C69C0100E9D3A2 /* Maze.swift in Sources */,
 				E65115F626C064C500595010 /* InsertionSort.swift in Sources */,
 				E6CA032D26C57365005DF0E4 /* ChartDescription.swift in Sources */,
@@ -380,6 +387,7 @@
 				E65115F926C06B2000595010 /* BubbleSort.swift in Sources */,
 				E6DF90A326AE4F2300E1967D /* AlgoVizApp.swift in Sources */,
 				E6B6A1E526B717B000D9E93E /* LoadJSON.swift in Sources */,
+				E675EE7626C6CA8000E9D3A2 /* Queue.swift in Sources */,
 				E65115F326C055DD00595010 /* MergeSort.swift in Sources */,
 				E6CA032B26C572CC005DF0E4 /* Chart.swift in Sources */,
 				E6B6A1D426B709D000D9E93E /* ChartCapsule.swift in Sources */,
