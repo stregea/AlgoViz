@@ -102,10 +102,10 @@ func generateMaze(rows: Int, columns: Int, sparcityOfWalls: Double) -> Maze {
     let cell: Cell = Cell(type: .Empty, coordinates: Coordinates(x: -1, y: -1))
     
     // Initialize an array of empty cells.
-    let empyCells: [Cell] = [Cell](repeating: cell, count: columns)
+    let emptyCells: [Cell] = [Cell](repeating: cell, count: columns)
     
     // Initialize a maze full of empty cell's.
-    var maze: [ [Cell] ] = [ [Cell] ](repeating: empyCells, count: rows)
+    var maze: [ [Cell] ] = [ [Cell] ](repeating: emptyCells, count: rows)
     
     // place walls within the maze.
     for row in 0..<rows {
@@ -161,10 +161,10 @@ func generateMaze(rows: Int, columns: Int, sparcityOfWalls: Double) -> Maze {
 
 /// This was taken from https://freecontent.manning.com/solving-mazes-with-swift/
 /// Still not entirely sure how this works yet.
-func successorsForMaze(maze: Maze) -> (Coordinates) -> [Coordinates] {
+func getNeighborsForMaze(maze: Maze) -> (Coordinates) -> [Coordinates] {
     
     /// Check above, below, left, and right of a given location within the maze
-    func successors(coords: Coordinates) -> [Coordinates] { //no diagonals
+    func getNeighbors(coords: Coordinates) -> [Coordinates] { //no diagonals
         
         // list to contain valid movements from given location (Successors).
         var availableCoordinates: [Coordinates] = []
@@ -191,5 +191,5 @@ func successorsForMaze(maze: Maze) -> (Coordinates) -> [Coordinates] {
      
         return availableCoordinates
     }
-    return successors
+    return getNeighbors
 }

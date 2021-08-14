@@ -23,6 +23,7 @@
 		E675EE7D26C6FEFB00E9D3A2 /* MazeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E675EE7C26C6FEFB00E9D3A2 /* MazeCell.swift */; };
 		E675EE8426C7020A00E9D3A2 /* MazeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = E675EE8326C7020A00E9D3A2 /* MazeGrid.swift */; };
 		E675EE8626C71E5000E9D3A2 /* MazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E675EE8526C71E5000E9D3A2 /* MazeView.swift */; };
+		E675EE8D26C7FB4800E9D3A2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = E675EE8C26C7FB4800E9D3A2 /* Node.swift */; };
 		E6B6A1D426B709D000D9E93E /* ChartCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B6A1D326B709D000D9E93E /* ChartCapsule.swift */; };
 		E6B6A1DD26B70ADB00D9E93E /* Algorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B6A1DC26B70ADB00D9E93E /* Algorithm.swift */; };
 		E6B6A1E026B70CD100D9E93E /* algorithms.json in Resources */ = {isa = PBXBuildFile; fileRef = E6B6A1DF26B70CD100D9E93E /* algorithms.json */; };
@@ -59,6 +60,7 @@
 		E675EE7C26C6FEFB00E9D3A2 /* MazeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeCell.swift; sourceTree = "<group>"; };
 		E675EE8326C7020A00E9D3A2 /* MazeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGrid.swift; sourceTree = "<group>"; };
 		E675EE8526C71E5000E9D3A2 /* MazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeView.swift; sourceTree = "<group>"; };
+		E675EE8C26C7FB4800E9D3A2 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		E6B6A1D326B709D000D9E93E /* ChartCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCapsule.swift; sourceTree = "<group>"; };
 		E6B6A1DC26B70ADB00D9E93E /* Algorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
 		E6B6A1DF26B70CD100D9E93E /* algorithms.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = algorithms.json; sourceTree = "<group>"; };
@@ -161,6 +163,41 @@
 			path = Maze;
 			sourceTree = "<group>";
 		};
+		E675EE8726C7FADD00E9D3A2 /* DataStructures */ = {
+			isa = PBXGroup;
+			children = (
+				E675EE8B26C7FB2C00E9D3A2 /* Stack */,
+				E675EE8A26C7FB1F00E9D3A2 /* Queue */,
+				E675EE8C26C7FB4800E9D3A2 /* Node.swift */,
+			);
+			path = DataStructures;
+			sourceTree = "<group>";
+		};
+		E675EE8826C7FB0100E9D3A2 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				E6B6A1E426B717B000D9E93E /* LoadJSON.swift */,
+				E6B6A1F726B73A0200D9E93E /* Generator.swift */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
+		E675EE8A26C7FB1F00E9D3A2 /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				E675EE7526C6CA8000E9D3A2 /* Queue.swift */,
+			);
+			path = Queue;
+			sourceTree = "<group>";
+		};
+		E675EE8B26C7FB2C00E9D3A2 /* Stack */ = {
+			isa = PBXGroup;
+			children = (
+				E61DBF5B26C151BF00730EE0 /* Stack.swift */,
+			);
+			path = Stack;
+			sourceTree = "<group>";
+		};
 		E6B6A1C626B7058F00D9E93E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,10 +287,8 @@
 		E6B6A1EF26B7189E00D9E93E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				E6B6A1E426B717B000D9E93E /* LoadJSON.swift */,
-				E6B6A1F726B73A0200D9E93E /* Generator.swift */,
-				E61DBF5B26C151BF00730EE0 /* Stack.swift */,
-				E675EE7526C6CA8000E9D3A2 /* Queue.swift */,
+				E675EE8826C7FB0100E9D3A2 /* Functions */,
+				E675EE8726C7FADD00E9D3A2 /* DataStructures */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -397,6 +432,7 @@
 				E6CA032D26C57365005DF0E4 /* ChartDescription.swift in Sources */,
 				E6DF90B526AE5A5000E1967D /* SortingView.swift in Sources */,
 				E66EC5F826C1FD28000A7535 /* AlgorithmData.swift in Sources */,
+				E675EE8D26C7FB4800E9D3A2 /* Node.swift in Sources */,
 				E675EE8426C7020A00E9D3A2 /* MazeGrid.swift in Sources */,
 				E6B6A1F126B71B9700D9E93E /* ModelData.swift in Sources */,
 				E6DF90B226AE563A00E1967D /* PathfinderView.swift in Sources */,

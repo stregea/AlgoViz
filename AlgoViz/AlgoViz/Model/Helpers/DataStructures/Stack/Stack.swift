@@ -8,19 +8,20 @@
 import Foundation
 
 struct Stack<T> {
-    var array: [T] = []
+    /// Array to store contents within the Stack.
+    var contents: [T] = []
     
     /// Push an element onto the stack.
     /// - Parameter element: The element to place onto the stack.
     mutating func push(_ element: T) {
-        array.append(element)
+        self.contents.append(element)
     }
     
     /// Pop an element from the stack and remove it.
     /// - Returns: The last element from the array, nil if there are no elements to pop.
     mutating func pop() -> T? {
-        if !array.isEmpty {
-            return array.removeLast()
+        if !self.contents.isEmpty {
+            return self.contents.removeLast()
         } else {
             return nil
         }
@@ -29,8 +30,8 @@ struct Stack<T> {
     /// Peek an element from the stack.
     /// - Returns: The last element from the array, nil if there are no elements to pop.
     func peek() -> T? {
-        if !array.isEmpty {
-            return array.last
+        if !self.contents.isEmpty {
+            return self.contents.last
         } else {
             return nil
         }
@@ -39,7 +40,7 @@ struct Stack<T> {
     /// Determine the size of the stack.
     /// - Returns: The number of elements existing within the stack.
     func size() -> Int {
-        return array.count
+        return contents.count
     }
     
     /// Determine if the stack is empty.
